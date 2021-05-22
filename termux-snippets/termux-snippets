@@ -1,0 +1,214 @@
+#!/usr/bin/env bash
+# Author: hakxcore
+declare -a tools=(cipher cheat covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shorturl todo transfer weather)
+declare -a validTools=()
+currentVersion="2.1.0"
+configuredClient=""
+prefix=/data/data/com.termux/files
+BOLD="$(printf '\033[1m')"
+RED="$(printf '\033[31m')"  
+GREEN="$(printf '\033[32m')"  
+ORANGE="$(printf '\033[33m')"  
+BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"  
+CYAN="$(printf '\033[36m')"  
+WHITE="$(printf '\033[37m')" 
+BLACK="$(printf '\033[30m')"
+REDBG="$(printf '\033[41m')"  
+GREENBG="$(printf '\033[42m')"  
+ORANGEBG="$(printf '\033[43m')"  
+BLUEBG="$(printf '\033[44m')"
+MAGENTABG="$(printf '\033[45m')"  
+CYANBG="$(printf '\033[46m')" 
+WHITEBG="$(printf '\033[47m')"
+BLACKBG="$(printf '\033[40m')"
+RESETBG="$(printf '\e[0m')"
+BLINK="$(printf '\033[5;31m')"
+
+## This function determines which http get tool the system has installed and returns an error if there isnt one
+getConfiguredClient()
+{
+  if  command -v curl &>/dev/null; then
+    configuredClient="curl"
+  elif command -v wget &>/dev/null; then
+    configuredClient="wget"
+  elif command -v http &>/dev/null; then
+    configuredClient="httpie"
+  elif command -v fetch &>/dev/null; then
+    configuredClient="fetch"
+  else
+    echo "Error: This tool requires either curl, wget, httpie or fetch to be installed." >&2
+    return 1
+  fi
+}
+
+httpGet()
+{
+  case "$configuredClient" in
+    curl)  curl -A curl -s "$@" ;;
+    wget)  wget -qO- "$@" ;;
+    httpie) http -b GET "$@" ;;
+    fetch) fetch -q "$@" ;;
+  esac
+}
+
+grablatestversion()
+{
+  repositoryName="Termux-snippets"
+  githubUserName="hakxcore"
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+}
+
+checkInternet()
+{
+  httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
+}
+
+header()
+{
+echo "$BOLD$GREEN                       -o          o-"
+echo "                        +hydNNNNdyh+"
+echo "                      +mMMMMMMMMMMMMm+"
+echo "                     dMM"$RESETBG"m:"$BOLD$GREEN"NMMMMMMN"$RESETBG":m"$BOLD$GREEN"MMd"                                                   
+echo "                                       "
+echo "                    hMMMMMMMMMMMMMMMMMMh"                                                      
+echo "                ..  yyyyyyyyyyyyyyyyyyyy  .."
+echo "              .mMMm MMMMMMMMMMMMMMMMMMMM mMMm."
+echo "              :MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:"
+echo "              :MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:"
+echo "              :MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:"
+echo "              :MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM: "                                              
+echo "              -MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM-  "                                              
+echo "               +yy+ MMMMMMMMMMMMMMMMMMMM +yy+"
+echo "                    mMMMMMMMMMMMMMMMMMMm"
+echo "                    ^/++MMMMh++hMMMM++/^"
+echo "                        MMMMo  oMMMM"
+echo "                        MMMMo  oMMMM"
+echo "                        oNMm-  -mMNs$RESETBG"
+echo ""
+ title="[Termux-snippets]"
+  installver=""$BLUE"Installed Version:$RESETBG $currentVersion"
+  latestver=""$BLUE"Latest Version:$RESETBG $latestVersion"
+  printf "\t\t     $BLUE%s$RESETBG\n" "$title"
+  printf "\t%s\t%s\n" "$latestver" "$installver"
+}
+
+
+toolMenu()
+{
+  while true; do
+    clear
+    header
+    count=1
+    for command in "${validTools[@]}"; do
+      if [[ $count -gt 9 ]];then c=$count
+      else c="0$count"; fi
+      spaces=$((30 - $(echo $command | wc -c)))
+      echo -n -e "\t\t$BLUE[$c]$RESETBG"
+      for (( i = 0 ; i < $spaces; i++)) ;do
+        printf " "
+      done
+      echo "$command"
+      count=$(( $count + 1 ))
+    done
+    echo -e -n "\t"$BLUE"Choose a tool or just press enter to go back:$RESETBG "
+    read choice
+    if [[ $choice == "" ]];then clear; header; break; fi
+    echo -e -n "\tEnter any arguments you want to use with the tool: "
+    read args
+    clear
+    if [[ $choice =~ [0-9] ]]; then ${validTools[$(($choice-1))]} $args
+    else $choice $args; fi
+    exit 0
+  done
+}
+
+menu()
+{
+  while true; do
+    echo -e "\t\t$BLUE[01]$RESETBG\t\t\tTools"
+    echo -e "\t\t$BLUE[02]$RESETBG\t\t\tInstallation Check"
+    echo -e "\t\t$BLUE[03]$RESETBG\t\t\tView man page"
+    echo -e "\t\t$BLUE[04]$RESETBG\t\t\tUpdate"
+    echo -e "\t\t$BLUE[05]$RESETBG\t\t\tDonate"
+    echo -e "\t\t$BLUE[06]$RESETBG\t\t\tQuit"
+    echo -e -n "\n\t"$BLUE"Choose an option:$RESETBG "
+    read choice
+    if [[ $choice -gt 6 || $choice -lt 1 ]];then
+      echo "Error invalid option!"
+      sleep 2
+      clear
+      header
+      continue
+    fi
+    clear
+    header
+    if   [[ $choice -eq 1 ]];then toolMenu
+    elif [[ $choice -eq 2 ]];then installationcheck
+    elif [[ $choice -eq 3 ]];then man termux-snippets
+    elif [[ $choice -eq 4 ]];then
+      git pull origin
+      #${validTools[1]} -u
+      sleep 2
+      clear
+      header
+    elif [[ $choice -eq 5 ]];then
+     clear
+      echo -e "\t\tThanks for thinking of donating, that's pretty cool of you"
+      echo -e "\n\t\tCryptocurrency Donation Addresses"
+      echo -e "\t\t\tBTC: "
+      echo -e "\t\t\tETH: "
+      echo -e "\t\t\tLTC: \n"
+      echo -e "\t\tNormal Methods"
+      echo -e "\t\t\tEmail: mukeshkumarcharak@gmail.com "
+      echo -e "\t\t\tSquare Cash: \n\n\n\n"
+      exit 0
+    elif [[ $choice -eq 6 ]]; then clear; exit 0
+    fi
+  done
+}
+
+installationcheck()
+{
+  validTools=()
+  for tool in "${tools[@]}"; do
+    if [ -e "$prefix/usr/bin/$tool" ]; then
+      state="present";
+      start=28;
+      validTools+=($tool);
+    else state="absent"; start=29; fi
+      if $1; then
+        echo -n -e "\t\t$BLUE$tool$RESETBG"
+        spaces=$(($start - $( echo $tool | wc -c)))
+        for (( i = 0 ; i < $spaces; i++)) ;do
+          printf " "
+        done
+        echo $state
+      fi
+  done
+  if $1; then
+    echo -n ""$BLUE"Press enter to go back to the menu$RESETBG"
+    read
+    clear
+    header
+  fi
+}
+
+if [[ $# -eq 0 ]]; then
+  clear
+  checkInternet
+  getConfiguredClient
+  grablatestversion
+  header
+  installationcheck false
+  echo
+  menu
+elif [[ $# -eq 1 ]]; then
+  if [[ $1 == "-u" || $1 == "update" ]]; then
+    installationcheck false
+    ${validTools[1]} -u
+  elif [[ $1 == "-h" || $1 == "help" ]];then  man bash-snippets
+  elif [[ $1 == "-v" ]]; then echo "Version $currentVersion"
+  fi
+
+fi

@@ -1,0 +1,262 @@
+#!/usr/bin/bash
+# Author: HAKXCORE https://github.com/hakxcore
+currentVersion="2.1.0"
+configuredClient=""
+## This function determines which http get tool the system has installed and returns an error if there isnt one
+getConfiguredClient()
+{
+  if  command -v curl &>/dev/null; then
+    configuredClient="curl"
+  elif command -v wget &>/dev/null; then
+    configuredClient="wget"
+  elif command -v http &>/dev/null; then
+    configuredClient="httpie"
+  elif command -v fetch &>/dev/null; then
+    configuredClient="fetch"
+  else
+    echo "Error: This tool requires either curl, wget, httpie or fetch to be installed." >&2
+    return 1
+  fi
+}
+
+getConfiguredjp2a()
+{
+        if command -v jp2a &>/dev/null; then
+                configuredjp2a="jp2a"
+        else
+                echo "This tool needs jp2a to be installed"
+                echo "Use "apt install jp2a" to install jp2a"
+	fi
+}
+
+## Allows to call the users configured client without if statements everywhere
+httpGet()
+{
+  case "$configuredClient" in
+    curl)  curl -A curl -s "$@" ;;
+    wget)  wget -qO- "$@" ;;
+    httpie) http -b GET "$@" ;;
+    fetch) fetch -q "$@" ;;
+  esac
+}
+checkInternet()
+{
+  httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
+}
+update()
+{
+  currentVersion=$currentVersion
+  repositoryName="Termux-snippets" #Name of repostiory to be updated ex. Sandman-Lite
+  githubUserName="hakxcore" #username that hosts the repostiory ex. hakxcore
+  nameOfInstallFile="install.sh" # change this if the installer file has a different name be sure to include file extension if there is one
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+
+  if [ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]; then
+    echo "Error: update utility has not been configured correctly." >&2
+    exit 1
+  elif [ $latestVersion == "" ]; then
+    echo "Error: no active internet connection" >&2
+    exit 1
+  else
+    if [ "$latestVersion" != "$currentVersion" ]; then
+      echo "Version $latestVersion available"
+      echo -n "Do you wish to update $repositoryName [Y/n]: "
+      read -r answer
+      if [ "$answer" == [Yy] ]; then
+        cd ~ || { echo 'Update Failed'; exit 1; }
+        if [ -d  ~/$repositoryName ]; then rm -rf $repositoryName || { echo "Permissions Error: try running the update as sudo"; exit 1; } ; fi
+        echo -n "Downloading latest version of: $repositoryName."
+        git clone -q "https://github.com/$githubUserName/$repositoryName" && touch .TSnippetsHiddenFile || { echo "Failure!"; exit 1; } &
+        while [ ! -f .TSnippetsHiddenFile ]; do { echo -n "."; sleep 2; };done
+        rm -f .TSnippetsHiddenFile
+        echo "Success!"
+        cd $repositoryName || { echo 'Update Failed'; exit 1; }
+        git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."
+        chmod a+x install.sh #this might be necessary in your case but wasnt in mine.
+        ./$nameOfInstallFile "update" || exit 1
+        cd ..
+        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory with sudo"; exit 1; }
+      else
+        exit 1
+      fi
+    else
+      echo "$repositoryName is already the latest version"
+    fi
+  fi
+}
+
+backGrounds()
+{
+  cat <<EOF
+   Usage : Enter any background from these when will be asked.
+
+   001. ackbar          002. afraid      003. agnes           004. aint-got-time 005. ams
+   006. ants            007. apcr        008. atis            009. away          010. awesome
+   011. awesome-awkward 012. awkward     013. awkward-awesome 014. bad           015. badchoice
+   016. bd              017. bender      018. bihw            019. biw           020. blb         
+   021. boat            022. both        023. bs              024. buzz          025. captain         
+   026. captain-america 027. cb          028. cbg             029. center        030. ch         
+   031. cheems          032. chosen      033. cmm             034. crazypills    035. cryingfloor         
+   036. db              037. dg          038. disastergirl    039. dodgson       040. doge         
+   041. drake           042. ds          043. dsm             044. dwight        045. elf         
+   046. ermg            047. fa          048. facepalm        049. fbf           050. feelsgood         
+   051. fetch           052. fine        053. firsttry        054. fmr           055. fry         
+   056. fwp             057. gandalf     058. gb              059. gears         060. ggg         
+   061. gru             062. grumpycat   063. hagrid          064. happening     065. harold         
+   066. hipster         067. icanhas     068. imsorry         069. inigo         070. interesting         
+   071. ive             072. iw          073. jd              074. jetpack       075. joker         
+   076. jw              077. keanu       078. kermit          079. kk            080. kombucha         
+   081. leo             082. live        083. ll              084. lrv           085. mb         
+   086. michael-scott   087. millers     088. mini-keanu      089. mmm           090. money         
+   091. mordor          092. morpheus    093. mw              094. nice          095. noidea         
+   096. ntot            097. oag         098. officespace     099. older         100. oprah         
+   101. patrick         102. persian     103. philosoraptor   104. pigeon        105. ptj         
+   106. puffin          107. red         108. regret          109. remembers     110. rollsafe         
+   111. sad-biden       112. sad-boehner 113. sad-bush        114. sad-clinton   115. sadfrog         
+   116. sad-obama       117. saltbae     118. sarcasticbear   119. sb            120. scc         
+   121. sf              122. sk          123. ski             124. snek          125. soa         
+   126. sohappy         127. sohot       128. soup-nazi       129. sparta        130. spiderman         
+   131. spongebob       132. ss          133. stew            134. stonks        135. stop-it         
+   136. success         137. tenguy      138. toohigh         139. tried         140. trump         
+   141. ugandanknuck    142. whatyear    143. winter          144. wkh           145. wonka         
+   146. worst           147. xy          148. yallgot         149. yodawg        150. yuno
+EOF
+}
+
+main(){
+    clear
+    getConfiguredjp2a
+    echo -en "\e[1;2;32m Enter the name for the meme's background (Ex. buzz, doge, blb ): \e[0m"
+    read bg
+    echo -en "\e[1;2;32m Enter text for first line: \e[0m"
+    read raw_first
+    almost_first=$(echo "$raw_first" | awk '{print tolower($0)}')
+    first=$(echo "$almost_first" | sed -e 's/ /_/g')
+    echo -en "\e[1;2;32m Enter text for second line: \e[0m"
+    read raw_second
+    almost_second=$(echo "$raw_second" | awk '{print tolower($0)}')
+    second=$(echo "$almost_second" | sed -e 's/ /_/g')
+    echo -en "\e[1;2;32m Choose any random digit between[0..20]: \e[0m"
+    read num
+    if [ -z "$first" ]
+    then
+    first=$(echo "_")
+    else
+      echo ""
+    fi
+    if [ -z "$second" ]
+    then
+    second=$(echo "_")
+    else
+      echo ""
+    fi
+    echo -e "\e[1;2;32m ----------------------------GENRATING MEME FOR YOU--------------------------------\e[0m"
+    curl -s "https://api.memegen.link/images/$bg/$first/$second.png" >> $fileName$num.png || return 1
+    if [ -d "Meme" ]
+    then
+      echo ""
+    else
+    mkdir Meme
+  fi
+    mv $fileName$num.png Meme
+    echo -en "\e[1;2;32m Meme stored in Meme Folder\e[0m"
+    echo ""
+    jp2a Meme/$fileName$num.png | lolcat
+    echo ""
+    echo -en "\e[1;2;32m Do you wanna open it[y/n]: \e[0m"
+    read choice
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+            xdg-open Meme/$fileName$num.png
+    else 
+    echo -e "\e[1;2;32m --------------------------MEME SUCCESSFULLY GENRATED------------------------------\e[0m"
+    echo ""
+    fi
+    return 0
+}
+
+usage()
+{
+  cat <<EOF
+
+Meme
+
+Description: A lightning fast meme generator from terminal.
+
+Usage: meme [flags] or meme
+  -b  See all Backgrouds
+  -u  Update Termux-snippets you can use [update] also
+  -h  Show help you can use [help] also
+  -v  Tool version you can use [version] also
+
+Examples:
+   meme
+EOF
+}
+
+
+
+while getopts "d:f:uvhb" opt; do
+  case "$opt" in
+    \?) echo "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
+#######################These flags will be updated later########################
+  d)
+                bg=${OPTARG}
+                ;;
+        f)
+                raw_first=${OPTARG}
+                almost_first=$(echo "$raw_first" | awk '{print tolower($0)}')
+        first=$(echo "$almost_first" | sed -e 's/ /_/g')
+        ;;
+    s)
+                raw_second=${OPTARG}
+                almost_second=$(echo "$raw_second" | awk '{print tolower($0)}')
+        second=$(echo "$almost_second" | sed -e 's/ /_/g')
+        ;;
+    f)
+        fileName=${OPTARG}
+        getConfiguredClient || exit 1
+        checkInternet || exit 1
+        main || exit 1
+        exit 0
+        ;;
+##############################################################################
+    h)  usage
+        exit 0
+        ;;
+    v)  echo "Version $currentVersion"
+        exit 0
+        ;;
+    u)  getConfiguredClient || exit 1
+        checkInternet || exit 1
+        update
+        exit 0
+        ;;
+    b)
+        backGrounds
+        exit 0
+        ;;
+
+    :)  echo "Option -$OPTARG requires an argument." >&2
+        exit 1
+        ;;
+  esac
+done
+
+# special set of first arguments that have a specific behavior across tools
+if [ "$fileName" == "" ]; then
+        fileName="meme"
+        main || exit 1
+        exit 0
+fi
+
+if [ "$1" == "update" ]; then
+        getConfiguredClient || exit 1
+        checkInternet || exit 1
+        update || exit 1
+        exit 0
+elif [ "$1" == "help" ]; then
+        usage
+        exit 0
+fi
