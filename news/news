@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: Hakxcore https://github.com/hakxcore
+## Author: Hakxcore https://github.com/hakxcore
 currentVersion="2.1.0"
 configuredClient=""
 Newsabout=$1
