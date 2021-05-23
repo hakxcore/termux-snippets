@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-# Modified for Termux by: Hakxcore https://github.com/hakxcore
-
+# Author: Hakxcore https://github.com/hakxcore
 currentVersion="2.1.0"
 multiline="0" # flag that indicates multiline option
 fileoutput="0" # flag indicating the -f option
 
-
-## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
 {
   if  command -v curl &>/dev/null; then
@@ -61,9 +58,9 @@ fi
 
 update()
 {
-  repositoryName="Termux-snippets" #Name of repostiory to be updated ex. Sandman-Lite
-  githubUserName="hakxcore" #username that hosts the repostiory ex. alexanderepstein
-  nameOfInstallFile="install.sh" # change this if the installer file has a different name be sure to include file extension if there is one
+  repositoryName="Termux-snippets" 
+  githubUserName="hakxcore" 
+  nameOfInstallFile="install" 
   latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
@@ -79,18 +76,18 @@ update()
       read -r answer
       if [[ "$answer" == [Yy] ]]; then
         cd ~ || { echo 'Update Failed'; exit 1; }
-        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update as sudo"; exit 1; } ; fi
+        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update again"; exit 1; } ; fi
         echo -n "Downloading latest version of: $repositoryName."
-        git clone -q "https://github.com/$githubUserName/$repositoryName" && touch .BSnippetsHiddenFile || { echo "Failure!"; exit 1; } &
-        while [ ! -f .BSnippetsHiddenFile ]; do { echo -n "."; sleep 2; };done
-        rm -f .BSnippetsHiddenFile
+        git clone -q "https://github.com/$githubUserName/$repositoryName" && touch .TSnippetsHiddenFile || { echo "Failure!"; exit 1; } &
+        while [ ! -f .TSnippetsHiddenFile ]; do { echo -n "."; sleep 2; };done
+        rm -f .TSnippetsHiddenFile
         echo "Success!"
         cd $repositoryName || { echo 'Update Failed'; exit 1; }
-        git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."
-        chmod a+x install.sh #this might be necessary in your case but wasnt in mine.
-        ./$nameOfInstallFile "update" || exit 1
+        git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit"
+        
+	./$nameOfInstallFile "update" || exit 1
         cd ..
-        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory with sudo"; exit 1; }
+        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory again"; exit 1; }
       else
         exit 1
       fi
