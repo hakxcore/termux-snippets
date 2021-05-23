@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: hakxcore
+## Author: hakxcore
 declare -a tools=(cipher cheat covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shorturl todo transfer weather)
 declare -a validTools=()
 currentVersion="2.1.0"
@@ -25,7 +25,6 @@ BLACKBG="$(printf '\033[40m')"
 RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 
-## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
 {
   if  command -v curl &>/dev/null; then
@@ -210,5 +209,4 @@ elif [[ $# -eq 1 ]]; then
   elif [[ $1 == "-h" || $1 == "help" ]];then  man bash-snippets
   elif [[ $1 == "-v" ]]; then echo "Version $currentVersion"
   fi
-
 fi
