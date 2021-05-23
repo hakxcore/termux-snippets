@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Inspired By: Navan Chauhan https://github.com/navanchauhan
-# Author: Hakxcore https://github.com/hakxcore
+## Inspired By: Navan Chauhan https://github.com/navanchauhan
+## Author: Hakxcore https://github.com/hakxcore
 currentVersion="2.1.0"
 configuredClient=""
 configuredPython=""
