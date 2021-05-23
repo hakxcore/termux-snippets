@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Author: Alexander Epstein https://github.com/alexanderepstein
-# Modified for termux by: Hakxcore
+# Author: Hakxcore https://github.com/hakxcore
+# Inspired by: Alexander Epstein
 # colors 
 BLUE="$(printf '\033[34m')"
 RESETBG="$(printf '\e[0m')"
@@ -100,14 +100,13 @@ update()
       read -r answer
       if [[ "$answer" == [Yy] ]]; then
         cd ~ || { echo 'Update Failed'; exit 1; }
-        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update as sudo"; exit 1; } ; fi
+        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update again"; exit 1; } ; fi
         git clone "https://github.com/$githubUserName/$repositoryName" || { echo "Couldn't download latest version"; exit 1; }
         cd $repositoryName || { echo 'Update Failed'; exit 1; }
         git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."
-        chmod a+x install.sh #this might be necessary in your case but wasnt in mine.
         ./$nameOfInstallFile "update" || exit 1
         cd ..
-        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory with sudo"; exit 1; }
+        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory again"; exit 1; }
       else
         exit 1
       fi
