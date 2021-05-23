@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-## Inspired by: Alexander Epstein https://github.com/alexanderepstein
-## Author: Hakxcore https://github.com/hakxcore
+# Inspired by: Alexander Epstein https://github.com/alexanderepstein
+# Author: Hakxcore https://github.com/hakxcore
 RED="$(printf '\033[31m')"
 GREEN="$(printf '\033[32m')"
 ORANGE="$(printf '\033[33m')"
