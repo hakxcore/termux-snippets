@@ -15,7 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+# make availble for termux users by: Hakxcore https://github.com/hakxcore 
 import argparse
 import atexit
 import base64
