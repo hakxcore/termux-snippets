@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Author: Hakxcore https://github.com/hakxcore
-# Colors
+## Author: Hakxcore https://github.com/hakxcore
+## Colors
 currentVersion="2.1.0"
 RED="$(printf '\033[31m')"
 GREEN="$(printf '\033[32m')"
