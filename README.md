@@ -565,3 +565,139 @@ Example:
     
     
 
+<details>
+<summary>Todo</summary>
+
+A simplistic command line todo list
+
+
+```bash
+Todo
+
+Description: A simplistic commandline todo list.
+
+Usage: todo [flags] or todo [flags] [arguments]
+  -c  Clear all the current tasks
+      Can also use clear instead of -c
+  -r  Remove the following task numbers seprated by spaces
+      Can also use remove instead of -r
+  -g  Get the current tasks
+      Can also use list instead of -g
+  -a  Add the following task
+      Can also use add instead of -a
+  -u  Update Termux-snippets Tools
+  -h  Show the help
+  -v  Get the tool version
+
+Examples:
+   todo -a My very first task
+   todo remove 2
+   todo -r 1 3
+   todo add Another Task
+   todo list
+   todo -g
+   todo -c
+   todo clear
+```
+
+</div>
+</details>
+    
+    
+    
+<details>
+<summary>Transfer</summary>
+
+Quickly transfer files from the command line.
+
+
+```bash
+Transfer
+
+Description: Quickly transfer files from the command line.
+
+Usage: transfer [flags] or transfer [flag] [args] or transfer [filePathToUpload]
+  -d  Download a single file
+      First arg: Output file directory
+      Second arg: File url id
+      Third arg: File name
+  -o  Onetime file upload
+  -u  Update Termux-snippets Tools
+  -h  Show the help
+  -v  Get the tool version
+Examples:
+  transfer ~/fileToTransfer.txt
+  transfer ~/firstFileToTransfer.txt ~/secondFileToTransfer.txt ~/thirdFileToTransfer.txt
+  transfer -d ~/outputDirectory fileID fileName
+  transfer -o ~/fileToTransfer.txt
+
+```
+</details>
+    
+    
+<details>
+<summary>Weather</summary>
+
+Provides a 3 day forecast
+
+With no arguments it will grab the weather for your location as determined by your ip
+
+```bash
+Weather
+
+Description: Provides a 3 day forecast on your current location or a specified location.
+  With no flags Weather will default to your current location.
+
+Usage: weather or weather [flag] or weather [country] or weather [city] [state]
+  weather [i][M] get weather in imperial units, optional M means windspeed in m/s
+  weather [m][M] get weather in metric units, optional M means windspeed in m/s
+  weather [Moon] grabs the phase of the moon
+  -u  Update Termux-snippets Tools
+  -h  Show the help
+  -v  Get the tool version
+
+Examples:
+  weather
+  weather Paris m
+  weather Tokyo
+  weather Moon
+  weather mM
+
+```
+
+With arguments you can pass in a city or country and get the weather in that area
+
+
+Also can show the current moon phase
+
+</details>
+    
+</br>
+</br>
+</br>
+    
+## API's USED
+
+<details>
+<summary>All API's</summary>
+
+* To get location based on ip address: [ipinfo](https://ipinfo.io)
+* To get and print weather based on a location: [wttr](http://wttr.in)
+* To grab the stock information in JSON format: [alphavantage](https://www.alphavantage.co)
+* To grab the latest exchange rate between currencies: [fixer](http://fixer.io)
+* To grab information on movies: [omdbapi](http://www.omdbapi.com/)
+* To grab recommendations based on an item: [tastedive](https://tastedive.com)
+* To determine masked link behind url shortner: [ki.tc](http://ki.tc)
+* To grab cheatsheets for commands and languages: [cheat](http://cheat.sh/)
+* To encode text into a qr code: [qrenco](http://qrenco.de)
+* To grab a list of a users repositories: [github](https://developer.github.com/v3/)
+* To upload a repository to bitbucket: [bitbucket](https://developer.atlassian.com/bitbucket/api/2/reference/)
+* To get your WAN ip address: [ipify](https://www.ipify.org/)
+* To grab the latest exchange rate between cryptocurrencies to standard currencies: [coinmarketcap](https://coinmarketcap.com/api/)
+* To perform symbolic math and other computations: [newton](https://newton.now.sh)
+* To transfer files: [transfer](https://transfer.sh)
+* To grab lyrics from a song: [lyrics.ovh](http://docs.lyricsovh.apiary.io)
+* To generate memes: [MemeGen](https://memegen.link)
+* To get a chart of the top 10 cryptocurrencies [rate.sx](http://rate.sx)
+
+</details>
