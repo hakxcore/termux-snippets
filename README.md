@@ -455,3 +455,113 @@ Examples:
   movie Inception
 ```
 </details>
+
+    
+<details>
+<summary>News</summary>
+
+Get latest news and headlines directly on your terminal.
+
+```bash
+News
+
+Description: Latest news updates or get your desired latest headlines of news.
+
+Usage: 
+  -u  Update Termux-snippets Tools
+  -h  Show the help
+  -v  Get the tool version
+
+Examples:
+  news
+  news <news_about>
+```
+</details>
+
+    
+    
+<details>
+<summary>Pwned</summary>
+
+Know if your data is breached in any data breach.
+
+```bash
+Pwned
+
+Description: Tells you when your account was last breached
+Usage: pwned [flag] or pwned [tag]
+  -u  Update Termux-snippets Tool
+  -h  Show the help
+  -v  Get the tool version
+
+Examples:
+  pwned anonymous007@gmail.com
+  pwned anyones@gmail.com
+```
+</details>
+    
+    
+    
+<details>
+<summary>Qrify</summary>
+
+Takes any string of text and turns it into a qr code
+
+This is useful for sending links or saving a string of commands to your phone
+
+
+```bash
+Qrify
+
+Description: Converts strings or URLs into a QR code.
+
+Usage: qrify [stringtoturnintoqrcode]
+    -u  Update Termux-snippets Tools
+    -m  Enable multiline support (feature not working yet)
+    -h  Show the help
+    -v  Get the tool version
+    -f  Store the QR code as a PNG file
+    -d  Decode the QR code from a PNG/GIF/JP(E)G file
+
+Examples:
+    qrify this is a test string
+    qrify -m two\\nlines
+    qrify github.com (no http:// or https://)
+    qrify -f fileoutputName google.com
+    qrify -d fileName.png
+
+Please pay attention:
+This script needs access to an external API.
+Do not use it to encode sensitive data.
+```
+</details>
+    
+    
+    
+<details>
+<summary>Shorturl</summary>
+
+Gets the link that is being masked by a url shortner
+
+```bash
+Shorturl
+
+Description: Shorten urls and unmask shortended urls.
+
+Usage: shorturl [flag] [URL] or short [flag]
+  -s  Shorten the URL
+  -e  Expand a shortened URL
+  -u  Update Termux-snippets Tools
+  -h  Show the help
+  -v  Get the tool version
+
+Example:
+   Input: shorturl -s https://possiblemaliciouswebsiteornot.com
+   Output: https://tinyurl.com/jkkj
+   Input:  shorturl -e tinyurl.com/jhkj
+   Output: http://possiblemaliciouswebsiteornot.com
+```
+</details>
+    
+    
+
