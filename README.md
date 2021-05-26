@@ -408,3 +408,50 @@ Examples:
 
 ```
 </details>
+
+    
+<details>
+<summary>Meme</summary>
+
+A lightning fast meme generator.
+
+```bash
+Meme
+
+Description: A lightning fast meme generator from terminal.
+
+Usage: meme [flags] or meme
+  -b  See all Backgrouds
+  -u  Update Termux-snippets you can use [update] also
+  -h  Show help you can use [help] also
+  -v  Tool version you can use [version] also
+
+Examples:
+   meme
+    
+```
+
+</details>
+    
+    
+<details>
+<summary>Movie</summary>
+
+Quick search that grabs relevant information about a movie
+
+```bash
+Movie
+
+Description: Provides relevant information about a certain movie.
+
+Usage: movie [flag] or movies [movieToSearch]
+  -u  Update Termux-snippets Tools
+  -h  Show the help
+  -v  Get the tool version
+  -d  Show detailed information
+
+Examples:
+  movie Argo
+  movie Inception
+```
+</details>
