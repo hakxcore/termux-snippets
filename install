@@ -21,7 +21,7 @@ BLACKBG="$(printf '\033[40m')"
 RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 
-declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shorturl termux-snippets todo transfer weather)
+declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shodan shorturl termux-snippets todo transfer weather)
 prefix="/data/data/com.termux/files"
 
 askInstall()
