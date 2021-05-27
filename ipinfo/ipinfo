@@ -74,7 +74,7 @@ update()
   repositoryName="Termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" 
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags) | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
     exit 1
