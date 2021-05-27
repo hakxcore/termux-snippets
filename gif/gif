@@ -110,12 +110,12 @@ main()
 usage()
 {
   cat <<EOF
-gif
+Gif
 
 Description: Get any type of gif on your terminal.
 
 Usage: gif <any_type_of_keyword_for_gif> use underscore "_" to seprate keywords.
-  -u  Update Termux-snippet Tools
+  -u  Update Termux-snippets Tools
   -h  Show the help
   -v  Get the tool version
 
