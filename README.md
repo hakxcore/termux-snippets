@@ -690,8 +690,10 @@ For installtion copy this command or execute the install file with bash.
 > git clone https://github.com/hakxcore/Termux-snippets
 > cd Termux-snippets
 > ./install
+> termux-snippets
 ```
- 
+ After installation write any tools name on terminal your will get its funtionalty
+    
 </br>
 </br>
     
