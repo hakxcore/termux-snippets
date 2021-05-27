@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Author: hakxcore
-# Special thanks to Alexander Epstein
+# Author: Hakxcore https://github.com/hakxcore
 
 currentVersion="2.1.0"
 configuredClient=""
@@ -49,7 +48,7 @@ update()
   
   repositoryName="Termux-snippets" 
   githubUserName="hakxcore" 
-  nameOfInstallFile="install.sh" 
+  nameOfInstallFile="install" 
   latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
@@ -65,7 +64,7 @@ update()
       read -r answer
       if [[ "$answer" == [Yy] ]]; then
         cd ~ || { echo 'Update Failed'; exit 1; }
-        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update as sudo"; exit 1; } ; fi
+        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update again"; exit 1; } ; fi
         echo -n "Downloading latest version of: $repositoryName."
         git clone -q "https://github.com/$githubUserName/$repositoryName" && touch .TSnippetsHiddenFile || { echo "Failure!"; exit 1; } &
         while [ ! -f .TSnippetsHiddenFile ]; do { echo -n "."; sleep 2; };done
@@ -73,10 +72,9 @@ update()
         echo "Success!"
         cd $repositoryName || { echo 'Update Failed'; exit 1; }
         git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."
-        chmod a+x install.sh #this might be necessary in your case but wasnt in mine.
         ./$nameOfInstallFile "update" || exit 1
         cd ..
-        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory with sudo"; exit 1; }
+        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory again"; exit 1; }
       else
         exit 1
       fi
