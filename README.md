@@ -22,7 +22,7 @@
 
 |              Main Landing Page                |                  Tools                  |
 |-----------------------------------------------|-----------------------------------------|
-|<p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/main1.jpg" width="90%" height="40%" /></p> | <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/tools1.jpg" width="90%" height="40%" /></p>|
+| <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/main.png" width="100%" height="40%" /></p> | <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/tools.png" width="100%" height="20%" /></p> |
 
 
 
