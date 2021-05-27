@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-# Inspired by: Alexander Epstein
 # colors 
 BLUE="$(printf '\033[34m')"
 RESETBG="$(printf '\e[0m')"
