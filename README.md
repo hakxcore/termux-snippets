@@ -687,6 +687,8 @@ For installtion copy this command or execute the install file with bash.
 - only usable for termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
     
 ```bash
+> git clone https://github.com/hakxcore/Termux-snippets
+> cd Termux-snippets
 > ./install
 ```
  
