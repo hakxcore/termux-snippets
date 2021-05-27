@@ -689,7 +689,7 @@ For installtion copy this command or execute the install file with bash.
     
 ## UNINSTALL 
 
-For uninstallation execute uninstall file using bash or copy this command
+For uninstallation execute uninstall file using bash or copy this command.
     
 ```bash
 > ./uninstall
@@ -753,3 +753,9 @@ All rights granted under this License are granted for the term of copyright on t
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  
+</br>
+</br> 
+
+ ## MOTIVATION
+ If you loved or find helpful this project Please consider a star it motivates me :) Thankyou 
