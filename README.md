@@ -674,6 +674,28 @@ Also can show the current moon phase
     
 </br>
 </br>
+
+## INSTALLATION
+
+For installtion copy this command or execute the install file with bash.
+- only usable for termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
+    
+```bash
+> ./install
+```
+ 
+</br>
+</br>
+    
+## UNINSTALL 
+
+For uninstallation execute uninstall file using bash or copy this command
+    
+```bash
+> ./uninstall
+```
+    
+</br>
 </br>
     
 ## API's USED
