@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-## Author: hakxcore
-declare -a tools=(cipher cheat covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shorturl todo transfer weather)
+# Author: hakxcore
+declare -a tools=(cipher cheat covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shodan shorturl todo transfer weather)
 declare -a validTools=()
 currentVersion="2.1.0"
 configuredClient=""
@@ -25,6 +25,7 @@ BLACKBG="$(printf '\033[40m')"
 RESETBG="$(printf '\e[0m')"
 BLINK="$(printf '\033[5;31m')"
 
+## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
 {
   if  command -v curl &>/dev/null; then
@@ -146,22 +147,44 @@ menu()
     elif [[ $choice -eq 2 ]];then installationcheck
     elif [[ $choice -eq 3 ]];then man termux-snippets
     elif [[ $choice -eq 4 ]];then
-      git pull origin
-      #${validTools[1]} -u
+      ${validTools[1]} -u
       sleep 2
       clear
       header
     elif [[ $choice -eq 5 ]];then
      clear
-      echo -e "\t\tThanks for thinking of donating, that's pretty cool of you"
-      echo -e "\n\t\tCryptocurrency Donation Addresses"
-      echo -e "\t\t\tBTC: "
-      echo -e "\t\t\tETH: "
-      echo -e "\t\t\tLTC: \n"
-      echo -e "\t\tNormal Methods"
-      echo -e "\t\t\tEmail: mukeshkumarcharak@gmail.com "
-      echo -e "\t\t\tSquare Cash: \n\n\n\n"
-      exit 0
+      echo -e "\tThanks for thinking of donating, that's pretty cool of you"
+      echo -e "\n\t"$BLUE"Cryptocurrency Donation Addresses$RESETBG"
+      echo -e "\t\t"$BLUE"BTC$RESETBG: bc1qyektg7utf0y5rse7f37uxpf7tahfgvdncl9m3r"
+      echo -e "\t\t"$BLUE"ETH$RESETBG: 0xB32e133851fdee114BFa599b11A37C3742f0C997"
+      echo -e "\t\t"$BLUE"BNB$RESETBG: bnb1f4stfh52cvkxtqsesasv3x4797g2aeamy6t30n\n"
+      echo -e "\t"$BLUE"Normal Methods$RESETBG"
+      echo -e "\t\t\t\t"$WHITEBG""$BLUE"G"$RED"O"$YELLOW"O"$BLUE"G"$GREEN"L"$RED"E "$GREEN"PAY$RESETBG"
+      cat <<EOF
+                █████████████████████████████████████████
+                █████████████████████████████████████████
+                ████ ▄▄▄▄▄ █▀█▀█ █ ▀ ██▄ ▄▄▄██ ▄▄▄▄▄ ████
+                ████ █   █ █▀▀▀  █ ▄ ▀█▀▄▄▀█ █ █   █ ████
+                ████ █▄▄▄█ █▀ ██▄▀▀▀█  █  █▄▀█ █▄▄▄█ ████
+                ████▄▄▄▄▄▄▄█▄▀ █ █ ▀ █▄█ ▀ █ █▄▄▄▄▄▄▄████
+                ████▄▄   █▄▄ ▄▀██▀▄▄▀▄▀ ▄█▄ ▄▄▀▄█ █▄▀████
+                █████▄▀█ ▀▄█▀█▄▀▄█▀ ▄██▀▀▀▀▀▀▀ ██▄▀█▀████
+                ████    ▄▄▄▄  ▄▀▄█▄█▀▄█ ▀▀█▀▄▄▀█▄▀█▀ ████
+                ████ ▄▀   ▄ ▄▀▀██▄▀ ▄▄▄██  ▀  ██▀ ▀▀█████
+                ████ █▄▀ ▄▄  ▀▀███▄▄▀ ▀▀ ▀▀▀█ ▀▄▄▄▀█ ████
+                ██████ ▀ █▄▀▀█ ▀▄█▀▄▀█ ▀▀ ▄█▀▀▀█▀▀ ▄█████
+                ████ ████▄▄ ▄▄▄▀▄▄▄▄█▄ ▀█▀▀▀▄▄▀▀▄█▀▀▀████
+                ████ █  ▄▄▄▀ ▄ █▄▄ ▄██ █▄ ████▄▀█   █████
+                ████▄█▄▄▄█▄▄▀▀▀▀█▀▄▄ ▀▀ ▀█▄▄ ▄▄▄ ▄█ ▀████
+                ████ ▄▄▄▄▄ █▄▀ █▀█▀ ▄▄▄▀█▀   █▄█ ▄  ▀████
+                ████ █   █ █ ▄  ██▄▄▀▄█▀▀█▄▀  ▄   ██▄████
+                ████ █▄▄▄█ █  ▄▀▄█▄  ██▀▄▀▀ ▄█ ▀█ ▀▄█████
+                ████▄▄▄▄▄▄▄█▄▄█▄▄█▄██▄██▄█▄▄▄▄▄▄█▄█▄█████
+                █████████████████████████████████████████
+                █████████████████████████████████████████
+EOF
+echo -e "\n\n\n\n\n\n\n"
+      header
     elif [[ $choice -eq 6 ]]; then clear; exit 0
     fi
   done
@@ -209,4 +232,5 @@ elif [[ $# -eq 1 ]]; then
   elif [[ $1 == "-h" || $1 == "help" ]];then  man bash-snippets
   elif [[ $1 == "-v" ]]; then echo "Version $currentVersion"
   fi
+
 fi
