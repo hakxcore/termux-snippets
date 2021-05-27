@@ -542,8 +542,44 @@ Do not use it to encode sensitive data.
 ```
 </details>
     
+
     
-    
+ <details>
+<summary>Shodan</summary>
+
+Shodan search engine for hackers available directly on terminal.
+
+```bash
+Usage: shodan [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  alert       Manage the network alerts for your account
+  convert     Convert the given input data file into a different format.
+  count       Returns the number of results for a search
+  data        Bulk data access to Shodan
+  domain      View all available information for a domain
+  download    Download search results and save them in a compressed JSON...
+  honeyscore  Check whether the IP is a honeypot or not.
+  host        View all available information for an IP address
+  info        Shows general information about your account
+  init        Initialize the Shodan command-line
+  myip        Print your external IP address
+  org         Manage your organization's access to Shodan
+  parse       Extract information out of compressed JSON files.
+  radar       Real-Time Map of some results as Shodan finds them.
+  scan        Scan an IP/ netblock using Shodan.
+  search      Search the Shodan database
+  stats       Provide summary information about a search query
+  stream      Stream data in real-time.
+  version     Print version of this tool.
+```
+</details>
+
+  
+
 <details>
 <summary>Shorturl</summary>
 
@@ -768,4 +804,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 </br> 
 
  ## MOTIVATION
- If you loved or find helpful this project Please consider a star it motivates me :) Thankyou 
+ If you loved or find helpful this project please consider a star it motivates me :) Thankyou 
