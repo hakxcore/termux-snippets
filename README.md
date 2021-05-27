@@ -20,6 +20,12 @@
 </p>
 
 
+|              Main Landing Page                |                  Tools                  |
+|-----------------------------------------------|-----------------------------------------|
+|<p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/main1.jpg" width="90%" height="40%" /></p> | <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/tools1.jpg" width="90%" height="40%" /></p>|
+
+
+
 # TOOLS
 <details>
 <summary>Cheat</summary>
