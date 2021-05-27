@@ -95,14 +95,13 @@ update()
       read -r answer
       if [[ "$answer" == [Yy] ]]; then
         cd ~ || { echo 'Update Failed'; exit 1; }
-        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update as sudo"; exit 1; } ; fi
+        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update again"; exit 1; } ; fi
         git clone "https://github.com/$githubUserName/$repositoryName" || { echo "Couldn't download latest version"; exit 1; }
         cd $repositoryName || { echo 'Update Failed'; exit 1; }
         git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."
-        chmod a+x install.sh #this might be necessary in your case but wasnt in mine.
-        ./$nameOfInstallFile "update" || exit 1
+           ./$nameOfInstallFile "update" || exit 1
         cd ..
-        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory with sudo"; exit 1; }
+        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory agian"; exit 1; }
       else
         exit 1
       fi
@@ -156,7 +155,7 @@ Description: Encode and decode your text see examples below.
 Usage: cipher [falgs] "your text to encode or decode"
   -e  Encode text
   -d  Decode text
-  -u  Update Termux-snippet Tools
+  -u  Update Termux-snippets Tools
   -h  Show the help
   -v  Get the tool version
 
