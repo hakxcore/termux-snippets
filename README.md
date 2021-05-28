@@ -719,7 +719,7 @@ Also can show the current moon phase
 
 ## INSTALLATION
 
-For installation copy this commands.
+For installation copy these commands.
 - only usable for termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
     
 ```bash
