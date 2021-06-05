@@ -66,10 +66,10 @@ checkInternet()
 
 header()
 {
-echo "$BOLD$GREEN                       -o          o-"
+echo "$BOLD$BLUE                       -o          o-"
 echo "                        +hydNNNNdyh+"
 echo "                      +mMMMMMMMMMMMMm+"
-echo "                     dMM"$RESETBG"m:"$BOLD$GREEN"NMMMMMMN"$RESETBG":m"$BOLD$GREEN"MMd"                                                   
+echo "                     dMM"$RESETBG"m:"$BOLD$BLUE"NMMMMMMN"$RESETBG":m"$BOLD$BLUE"MMd"                                                   
 echo "                                       "
 echo "                    hMMMMMMMMMMMMMMMMMMh"                                                      
 echo "                ..  yyyyyyyyyyyyyyyyyyyy  .."
