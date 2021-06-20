@@ -869,11 +869,11 @@ If this project helped you in any way and you feel like supporting me
 ###### BTC: 38Q5VbH63MtouxHu8BuPNLzfY5B5RNVMDn
 ###### ETH: 0xf7c60C06D298FF954917eA45206426f79d40Ac9D
 ###### LTC: LWZ3T19YUk66dgkczN7dRhiXDMqSYrXUV4
-
 #### Inspired by: [Bash-Scripts](https://github.com/alexanderepstein/Bash-Snippets)  
+<a href="https://www.buymeacoffee.com/https://www.buymeacoffee.com/hakxcore"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="https://www.buymeacoffee.com/hakxcore" /></a>
+</br>
+</br>
 
-</br>
-</br>
   
 ## LICENSE
 
