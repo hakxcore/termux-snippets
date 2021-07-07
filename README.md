@@ -4,7 +4,7 @@
 
 </p>
 <p align="center">
-<img src="https://raw.githubusercontent.com/hakxcore/Termux-snippets/main/media/snippets.png" width="100%" height="270"/>
+<img src="https://raw.githubusercontent.com/hakxcore/Termux-snippets/main/media/termux-snippets.png"/></p>
 <a href="https://github.com/hakxcore/Anonymous/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/hakxcore/Termux-snippets?label=Watchers&color=2eb2ff&style=flat-square"></a>
 <a href="https://github.com/hakxcore/followers"><img title="Followers" src="https://img.shields.io/github/followers/hakxcore?color=2eb2ff&style=flat-square"></a>
 <a href="https://github.com/hakxcore/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/hakxcore/Termux-snippets?color=2eb2ff&style=flat-square"></a>
@@ -809,13 +809,13 @@ Also can show the current moon phase
 ## INSTALLATION
 
 For installation copy these commands.
-- only usable for termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
+- only for Termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
     
 ```bash
-> git clone https://github.com/hakxcore/Termux-snippets
-> cd Termux-snippets
-> ./install
-> termux-snippets
+ git clone https://github.com/hakxcore/Termux-snippets
+ cd Termux-snippets
+ ./install
+ termux-snippets
 ```
  After installation write any tool's name on terminal you will get its funtionalty.
     
@@ -827,7 +827,7 @@ For installation copy these commands.
 For uninstallation execute uninstall file using bash or copy this command.
     
 ```bash
-> ./uninstall
+ ./uninstall
 ```
     
 </br>
