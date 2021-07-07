@@ -135,8 +135,7 @@ main(){
     read raw_second
     almost_second=$(echo "$raw_second" | awk '{print tolower($0)}')
     second=$(echo "$almost_second" | sed -e 's/ /_/g')
-    echo -en "\e[1;2;32m Choose any random digit between[0..20]: \e[0m"
-    read num
+    curl -s "https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new"| read num && echo $num
     if [ -z "$first" ]
     then
     first=$(echo "_")
