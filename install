@@ -24,18 +24,40 @@ BLINK="$(printf '\033[5;31m')"
 declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shodan shorturl termux-snippets todo transfer weather)
 prefix="/data/data/com.termux/files"
 
+installationEnd()
+{
+	echo -n "( •_•)"
+	sleep .75
+	echo -n -e "\r( •_•)>$BLUE⌐■-■$RESETBG"
+	sleep .75
+	echo -n -e "\r               "
+	echo  -e "\r($BLUE⌐■_■$RESETBG)"
+	sleep .5
+	echo "Termux Snippets version $BLUE$currentVersion$RESETBG"
+	echo  "$GREEN""https://github.com/hakxcore/Termux-snippets$RESETBG"
+}
+
 askInstall()
 {
   read -p "$BLUE>$RESETBG Do you wish to install $BLUE$1$RESETBG [Y/n]: " answer
   answer=${answer:-Y}
 
   if [[ "$answer" == [Yy] ]]; then
-    cd $1 || return 1
-    echo -n "Installing $BLUE$1$RESETBG: "
-    chmod a+x $1
-    cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
-    echo ""$GREEN"Success$RESETBG"
-    cd .. || return 1
+	  if [[ $1 == "weather" ]]; then
+		  cd $1 || return 1
+		  echo -n "Installing $BLUE$1$RESETBG: "
+		  chmod a+x $1
+		  cp $1 $prefix/usr/bin > /dev/null 2>&1;
+		  echo ""$GREEN"Success$RESETBG"
+		  cd ..; installationEnd ; exit 1 || return 1
+	  else 
+		  cd $1 || return 1
+		  echo -n "Installing $BLUE$1$RESETBG: "
+		  chmod a+x $1
+		  cp $1 $prefix/usr/bin > /dev/null 2>&1;
+		  echo ""$GREEN"Success$RESETBG"
+		  cd .. || return 1
+	  fi
   fi
 }
 
@@ -48,7 +70,7 @@ updateTool()
     chmod a+x $1
     cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
     echo ""$GREEN"Success$RESETBG"
-    cd .. || return 1
+    cd ..; installationEnd || return 1
   fi
 }
 
@@ -60,7 +82,7 @@ singleInstall()
   chmod a+x $1
   cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
   echo ""$GREEN"Success$RESETBG"
-  cd .. || exit 1
+  cd ..; installationEnd || exit 1
 }
 
 
@@ -92,8 +114,3 @@ elif [[ $1 == "update" ]]; then
 else
   singleInstall $1 || exit 1
 fi
-
-echo -n "( •_•)"
-sleep .5
-echo "Termux Snippets version $currentVersion"
-echo  "https://github.com/hakxcore/Termux-snippets"
