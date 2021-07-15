@@ -4,7 +4,7 @@
 
 </p>
 <p align="center">
-<img src="https://raw.githubusercontent.com/hakxcore/Termux-snippets/main/media/snippets.png" width="100%" height="270"/>
+<img src="https://raw.githubusercontent.com/hakxcore/Termux-snippets/main/media/termux-snippets.png"/></p>
 <a href="https://github.com/hakxcore/Anonymous/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/hakxcore/Termux-snippets?label=Watchers&color=2eb2ff&style=flat-square"></a>
 <a href="https://github.com/hakxcore/followers"><img title="Followers" src="https://img.shields.io/github/followers/hakxcore?color=2eb2ff&style=flat-square"></a>
 <a href="https://github.com/hakxcore/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/hakxcore/Termux-snippets?color=2eb2ff&style=flat-square"></a>
@@ -22,7 +22,7 @@
 
 |              Main Landing Page                |                  Tools                  |
 |-----------------------------------------------|-----------------------------------------|
-| <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/main.png" width="100%" height="40%" /></p> | <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/tools.png" width="100%" height="20%" /></p> |
+| <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/main.png" width="90%" height="40%" /></p> | <p align="center"><img src="https://github.com/hakxcore/Termux-snippets/blob/main/media/tools.png" width="100%" height="570" /></p> |
 
 
 
@@ -32,10 +32,6 @@
   
 The fastest way to find {command options|code pieces} you need. 
 Supports multiple languages and many bash commands also.
-  
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cheat/cheat.png?raw=true">
-</div>
 
 ```bash
 Cheat
@@ -65,15 +61,17 @@ Examples:
   cheat -i go operators
   
   ```
+  
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cheat/cheat.png?raw=true alt="real time usage image"">
+</div>
 </details>
 
 <details>
 <summary>Cipher</summary>
   Cipher encrypt and decrypts your text
   
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cipher/cipher.png?raw=true">
-</div>
+
   
   ```bash
   Cipher
@@ -92,6 +90,9 @@ Examples:
   cipher -d <text to decode>
   
   ```
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cipher/cipher.png?raw=true">
+</div>
 </details>
   
   
@@ -100,15 +101,7 @@ Examples:
 
  Tool that get the country wise information about covid-19 on the terminal itself   
  
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo1.png?raw=true">
-</div>
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo2.png?raw=true">
-</div>
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo3.png?raw=true">
-</div>
+
 
 ```bash
 Covidinfo
@@ -124,6 +117,15 @@ Examples:
   covidinfo
 
 ```
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo1.png?raw=true">
+</div>
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo2.png?raw=true">
+</div>
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo3.png?raw=true">
+</div>
 </details>
   
 <details>
@@ -131,9 +133,7 @@ Examples:
 
 A wrapper for openssl that allows for quickly encrypting and decrypting files
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/crypt/crypt.png?raw=true">
-</div>
+
   
 ```bash
 crypt -e [original file] [encrypted file] # encrypts files
@@ -166,6 +166,10 @@ Examples:
   crypt -d myEncryptedFile.jpg thisIsNowDecrypted.txt (change filetype back so now default program is correct)
 
   ```
+  
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/crypt/crypt.png?raw=true">
+</div>
 </details>
   
   
@@ -174,12 +178,6 @@ Examples:
 
 Shows Cryptocurrency based on realtime exchange rates of the top 10 cryptos and a realtime chart of anyone crypto.
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cryptocurrency/crytocurrency1.png?raw=true">
-</div
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cryptocurrency/crytocurrency2.png?raw=true">
-</div>
   
 ```bash
 CryptoCurrency
@@ -198,6 +196,14 @@ Examples:
    cryptocurrency
    cryptocurrency -o #for all the functionalities of tool
   ```
+  
+
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cryptocurrency/crytocurrency1.png?raw=true">
+</div>
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cryptocurrency/crytocurrency2.png?raw=true">
+</div>
 </details>
 
 
@@ -206,9 +212,7 @@ Examples:
 
 Provides data for  wan address, lan address, router address, dns address, mac address, and ip geolocation
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/geo/geo.png?raw=true">
-</div>
+
   
 ```bash
 Geo
@@ -235,6 +239,10 @@ Example: geo -a 8.8.8.8 -o city,zip,isp
   -h            Returns Help Screen
   -u            Updates Termux-snippets
 ```
+  
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/geo/geo.png?raw=true">
+</div>
 </details>
   
   
@@ -243,9 +251,7 @@ Example: geo -a 8.8.8.8 -o city,zip,isp
 
 Gif gets the gifs related to the keyword which you gave as an argument and continuously play|prints on the terminal.
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/gif/gif.png?raw=true">
-</div>
+
   
 ```bash
 Gif
@@ -262,6 +268,10 @@ Examples:
   gif krishna
   gif going_to_school
 ```
+  
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/gif/gif.png?raw=true">
+</div>
 </details>
   
   
@@ -271,9 +281,6 @@ Examples:
 
 Googler to directly make search on terminal. 
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/googler/googler.png?raw=true">
-</div>
 
 ```bash
 googler search <you_wanna_search_about>
@@ -368,6 +375,11 @@ License: GPLv3
 Webpage: https://github.com/jarun/googler
 Modifications BY: Hakxcore https://github.com/hakxcore
 ```
+  
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/googler/googler.png?raw=true">
+</div>
+
 </details>
   
   
@@ -376,9 +388,7 @@ Modifications BY: Hakxcore https://github.com/hakxcore
 
 Similar to geo but have some different functionalty.
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/ipinfo/ipinfo.png?raw=true">
-</div>
+
 
 ```bash
 ipinfo -a <ip_address>
@@ -402,6 +412,10 @@ Examples:
   ipinfo -a <someone's ip-addr>
 
 ```
+    
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/ipinfo/ipinfo.png?raw=true">
+</div>
 </details>
     
     
@@ -411,9 +425,6 @@ Examples:
 There so many tools to play within jukebox.
 
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/jukebox/jukebox.png?raw=true">
-</div>
 
 ```bash
 jukebox
@@ -428,17 +439,17 @@ Examples:
   jukebox
 
 ```
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/jukebox/jukebox.png?raw=true">
+</div>
 </details>
     
     
 <details>
 <summary>Lyrics</summary>
 
-Grab lyrics for a given song quickly from the command line.
-
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/lyrics/lyrics.png?raw=true">
-</div>
+Grab lyrics for a given song quickly from the command line
+    
 
 ```bash
 Lyrics
@@ -458,6 +469,10 @@ Examples:
    lyrics -a logic -s run it -f ~/runItLyrics.txt
 
 ```
+
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/lyrics/lyrics.png?raw=true">
+</div>
 </details>
 
     
@@ -467,9 +482,7 @@ Examples:
 A lightning fast meme generator.
 
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/meme/meme.png?raw=true">
-</div>
+
     
 ```bash
 Meme
@@ -486,7 +499,9 @@ Examples:
    meme
     
 ```
-
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/meme/meme.png?raw=true">
+</div>
 </details>
     
     
@@ -496,9 +511,7 @@ Examples:
 Quick search that grabs relevant information about a movie
 
     
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/movie/movie.png?raw=true">
-</div>
+
     
 ```bash
 Movie
@@ -514,7 +527,10 @@ Usage: movie [flag] or movies [movieToSearch]
 Examples:
   movie Argo
   movie Inception
-```
+```  
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/movie/movie.png?raw=true">
+</div>
 </details>
 
     
@@ -524,9 +540,7 @@ Examples:
 Get latest news and headlines directly on your terminal.
 
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/news/news.png?raw=true">
-</div>
+
     
 ```bash
 News
@@ -542,6 +556,10 @@ Examples:
   news
   news <news_about>
 ```
+    
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/news/news.png?raw=true">
+</div>
 </details>
 
     
@@ -550,10 +568,6 @@ Examples:
 <summary>Pwned</summary>
 
 Know if your data is breached in any data breach.
-
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/pwned/pwned.png?raw=true">
-</div>
     
 ```bash
 Pwned
@@ -568,6 +582,10 @@ Examples:
   pwned anonymous007@gmail.com
   pwned anyones@gmail.com
 ```
+    
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/pwned/pwned.png?raw=true">
+</div>
 </details>
     
     
@@ -578,10 +596,6 @@ Examples:
 Takes any string of text and turns it into a qr code
 
 This is useful for sending links or saving a string of commands to your phone
-
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/qrify/qrify.png?raw=true">
-</div>
 
 ```bash
 Qrify
@@ -607,6 +621,10 @@ Please pay attention:
 This script needs access to an external API.
 Do not use it to encode sensitive data.
 ```
+    
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/qrify/qrify.png?raw=true">
+</div>
 </details>
     
 
@@ -615,13 +633,6 @@ Do not use it to encode sensitive data.
 <summary>Shodan</summary>
 
 Shodan search engine for hackers available directly on terminal.
-
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shodan/shodan1.png?raw=true">
-</div>
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shodan/shodan2.png?raw=true">
-</div>
 
 ```bash
 Usage: shodan [OPTIONS] COMMAND [ARGS]...
@@ -650,6 +661,12 @@ Commands:
   stream      Stream data in real-time.
   version     Print version of this tool.
 ```
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shodan/shodan1.png?raw=true">
+</div>
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shodan/shodan2.png?raw=true">
+</div>
 </details>
 
   
@@ -659,9 +676,7 @@ Commands:
 
 Gets the link that is being masked by a url shortner
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shorturl/shorturl.png?raw=true">
-</div>
+
   
 ```bash
 Shorturl
@@ -681,6 +696,9 @@ Example:
    Input:  shorturl -e tinyurl.com/jhkj
    Output: http://possiblemaliciouswebsiteornot.com
 ```
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shorturl/shorturl.png?raw=true">
+</div>
 </details>
     
     
@@ -690,9 +708,6 @@ Example:
 
 A simplistic command line todo list
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/todo/todo.png?raw=true">
-</div>
 
 ```bash
 Todo
@@ -722,7 +737,8 @@ Examples:
    todo -c
    todo clear
 ```
-
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/todo/todo.png?raw=true">
 </div>
 </details>
     
@@ -733,9 +749,7 @@ Examples:
 
 Quickly transfer files from the command line.
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/transfer/transfer.png?raw=true">
-</div>
+
 
 ```bash
 Transfer
@@ -758,6 +772,9 @@ Examples:
   transfer -o ~/fileToTransfer.txt
 
 ```
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/transfer/transfer.png?raw=true">
+</div>
 </details>
     
     
@@ -769,9 +786,7 @@ Provides a 3 day forecast
 With no arguments it will grab the weather for your location as determined by your ip
 
 
-<div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/weather/weather.png?raw=true">
-</div>
+
   
 ```bash
 Weather
@@ -800,22 +815,20 @@ With arguments you can pass in a city or country and get the weather in that are
 
 
 Also can show the current moon phase
-
+<div align="center">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/weather/weather.png?raw=true">
+</div>
 </details>
     
-</br>
 </br>
 
 ## INSTALLATION
 
 For installation copy these commands.
-- only usable for termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
+- only for Termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
     
 ```bash
-> git clone https://github.com/hakxcore/Termux-snippets
-> cd Termux-snippets
-> ./install
-> termux-snippets
+ git clone https://github.com/hakxcore/Termux-snippets; cd Termux-snippets; ./install; termux-snippets
 ```
  After installation write any tool's name on terminal you will get its funtionalty.
     
@@ -827,10 +840,9 @@ For installation copy these commands.
 For uninstallation execute uninstall file using bash or copy this command.
     
 ```bash
-> ./uninstall
+ ./uninstall
 ```
     
-</br>
 </br>
     
 ## API's USED
@@ -860,20 +872,24 @@ For uninstallation execute uninstall file using bash or copy this command.
 
 </details>
 
-</br>
 </br> 
 
 ## DONATE
 If this project helped you in any way and you feel like supporting me
 
-###### BTC: 38Q5VbH63MtouxHu8BuPNLzfY5B5RNVMDn
-###### ETH: 0xf7c60C06D298FF954917eA45206426f79d40Ac9D
-###### LTC: LWZ3T19YUk66dgkczN7dRhiXDMqSYrXUV4
+[![Donate with Bitcoin](https://en.cryptobadges.io/badge/small/38Q5VbH63MtouxHu8BuPNLzfY5B5RNVMDn)](https://en.cryptobadges.io/donate/38Q5VbH63MtouxHu8BuPNLzfY5B5RNVMDn)
+  
+
+[![Donate with Bitcoin](https://en.cryptobadges.io/badge/small/0xf7c60C06D298FF954917eA45206426f79d40Ac9D)](https://en.cryptobadges.io/donate/0xf7c60C06D298FF954917eA45206426f79d40Ac9D)
+  
+[![Donate with Bitcoin](https://en.cryptobadges.io/badge/small/LWZ3T19YUk66dgkczN7dRhiXDMqSYrXUV4)](https://en.cryptobadges.io/donate/LWZ3T19YUk66dgkczN7dRhiXDMqSYrXUV4)
 #### Inspired by: [Bash-Scripts](https://github.com/alexanderepstein/Bash-Snippets)  
 <a href="https://www.buymeacoffee.com/https://www.buymeacoffee.com/hakxcore"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="https://www.buymeacoffee.com/hakxcore" /></a>
-</br>
-</br>
 
+
+</br>
+</br>
+</br>
   
 ## LICENSE
 
