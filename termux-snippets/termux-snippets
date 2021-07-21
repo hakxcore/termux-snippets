@@ -103,7 +103,7 @@ toolMenu()
     for command in "${validTools[@]}"; do
       if [[ $count -gt 9 ]];then c=$count
       else c="0$count"; fi
-      spaces=$((30 - $(echo $command | wc -c)))
+      spaces=17
       echo -n -e "\t\t$BLUE[$c]$RESETBG"
       for (( i = 0 ; i < $spaces; i++)) ;do
         printf " "
