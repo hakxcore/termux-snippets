@@ -824,8 +824,7 @@ Also can show the current moon phase
 
 ## INSTALLATION
 
-For installation copy these commands.
-- only for Termux if you wanna snippets for debian OS use: [Bash-Snippets](https://github.com/alexanderepstein/Bash-Snippets)
+For installation copy these commands
     
 ```bash
  git clone https://github.com/hakxcore/Termux-snippets; cd Termux-snippets; ./install; termux-snippets
