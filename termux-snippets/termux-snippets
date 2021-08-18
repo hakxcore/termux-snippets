@@ -195,10 +195,10 @@ installationcheck()
   validTools=()
   for tool in "${tools[@]}"; do
     if [ -e "$prefix/usr/bin/$tool" ]; then
-      state="present";
+      state="$GREEN✔$RESETBG";
       start=28;
       validTools+=($tool);
-    else state="absent"; start=29; fi
+    else state="$RED✘$RESETBG"; start=29; fi
       if $1; then
         echo -n -e "\t\t$BLUE$tool$RESETBG"
         spaces=$(($start - $( echo $tool | wc -c)))
