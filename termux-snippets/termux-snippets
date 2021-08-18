@@ -198,7 +198,7 @@ installationcheck()
       state="$GREEN✔$RESETBG";
       start=28;
       validTools+=($tool);
-    else state="$RED✘$RESETBG"; start=29; fi
+    else state="$RED✘$RESETBG"; start=28; fi
       if $1; then
         echo -n -e "\t\t$BLUE$tool$RESETBG"
         spaces=$(($start - $( echo $tool | wc -c)))
