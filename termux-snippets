@@ -209,7 +209,7 @@ installationcheck()
       fi
   done
   if $1; then
-    echo -n -e "\n\t"$BLUE"Press enter to go back to the menu$RESETBG"
+    echo -n -e "\n\t"$BLUE"Press enter to go back to the menu: $RESETBG"
     read
     clear
     header
