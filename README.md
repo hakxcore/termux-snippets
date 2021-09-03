@@ -55,7 +55,7 @@ Examples:
   ```
   
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cheat/cheat.png?raw=true alt="real time usage image"">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/cheat/cheat.png?raw=true alt="real time usage image"">
 </div>
 </details>
 
@@ -83,7 +83,7 @@ Examples:
   
   ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cipher/cipher.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/cipher/cipher.png?raw=true">
 </div>
 </details>
   
@@ -110,13 +110,13 @@ Examples:
 
 ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo1.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/covidinfo/covidinfo1.png?raw=true">
 </div>
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo2.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/covidinfo/covidinfo2.png?raw=true">
 </div>
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/covidinfo/covidinfo3.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/covidinfo/covidinfo3.png?raw=true">
 </div>
 </details>
   
@@ -160,7 +160,7 @@ Examples:
   ```
   
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/crypt/crypt.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/crypt/crypt.png?raw=true">
 </div>
 </details>
   
@@ -191,10 +191,10 @@ Examples:
   
 
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cryptocurrency/crytocurrency1.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/cryptocurrency/crytocurrency1.png?raw=true">
 </div>
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/cryptocurrency/crytocurrency2.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/cryptocurrency/crytocurrency2.png?raw=true">
 </div>
 </details>
 
@@ -233,7 +233,7 @@ Example: geo -a 8.8.8.8 -o city,zip,isp
 ```
   
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/geo/geo.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/geo/geo.png?raw=true">
 </div>
 </details>
   
@@ -262,7 +262,7 @@ Examples:
 ```
   
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/gif/gif.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/gif/gif.png?raw=true">
 </div>
 </details>
   
@@ -369,7 +369,7 @@ Modifications BY: Hakxcore https://github.com/hakxcore
 ```
   
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/googler/googler.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/googler/googler.png?raw=true">
 </div>
 
 </details>
@@ -406,7 +406,7 @@ Examples:
 ```
     
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/ipinfo/ipinfo.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/ipinfo/ipinfo.png?raw=true">
 </div>
 </details>
     
@@ -432,7 +432,7 @@ Examples:
 
 ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/jukebox/jukebox.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/jukebox/jukebox.png?raw=true">
 </div>
 </details>
     
@@ -463,7 +463,7 @@ Examples:
 ```
 
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/lyrics/lyrics.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/lyrics/lyrics.png?raw=true">
 </div>
 </details>
 
@@ -492,7 +492,7 @@ Examples:
     
 ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/meme/meme.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/meme/meme.png?raw=true">
 </div>
 </details>
     
@@ -521,7 +521,7 @@ Examples:
   movie Inception
 ```  
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/movie/movie.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/movie/movie.png?raw=true">
 </div>
 </details>
 
@@ -550,7 +550,7 @@ Examples:
 ```
     
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/news/news.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/news/news.png?raw=true">
 </div>
 </details>
 
@@ -576,7 +576,7 @@ Examples:
 ```
     
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/pwned/pwned.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/pwned/pwned.png?raw=true">
 </div>
 </details>
     
@@ -615,7 +615,7 @@ Do not use it to encode sensitive data.
 ```
     
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/qrify/qrify.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/qrify/qrify.png?raw=true">
 </div>
 </details>
     
@@ -654,10 +654,10 @@ Commands:
   version     Print version of this tool.
 ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shodan/shodan1.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/shodan/shodan1.png?raw=true">
 </div>
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shodan/shodan2.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/shodan/shodan2.png?raw=true">
 </div>
 </details>
 
@@ -689,7 +689,7 @@ Example:
    Output: http://possiblemaliciouswebsiteornot.com
 ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/shorturl/shorturl.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/shorturl/shorturl.png?raw=true">
 </div>
 </details>
     
@@ -730,7 +730,7 @@ Examples:
    todo clear
 ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/todo/todo.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/todo/todo.png?raw=true">
 </div>
 </details>
     
@@ -765,7 +765,7 @@ Examples:
 
 ```
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/transfer/transfer.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/transfer/transfer.png?raw=true">
 </div>
 </details>
     
@@ -808,7 +808,7 @@ With arguments you can pass in a city or country and get the weather in that are
 
 Also can show the current moon phase
 <div align="center">
-<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/Termux-snippets/blob/main/weather/weather.png?raw=true">
+<img max-height="500px" max-width="500px" src="https://github.com/hakxcore/termux-snippets/blob/main/weather/weather.png?raw=true">
 </div>
 </details>
     
@@ -819,7 +819,7 @@ Also can show the current moon phase
 For installation copy these commands
     
 ```bash
- git clone https://github.com/hakxcore/Termux-snippets; cd Termux-snippets; ./install; termux-snippets
+ git clone https://github.com/hakxcore/termux-snippets; cd termux-snippets; ./install; termux-snippets
 ```
  After installation write any tool's name on terminal you will get its funtionalty.
     
