@@ -2,6 +2,8 @@
   <a ><img title="Built With Love" src="https://forthebadge.com/images/badges/built-with-love.svg" ></a>
 </p>
 
+## Tool is in Testing Mode we are ready to deploy new features shortly 🎉
+
 </p>
 <p align="center">
 <img src="https://raw.githubusercontent.com/hakxcore/Termux-snippets/main/media/termux-snippets.png"/></p>
