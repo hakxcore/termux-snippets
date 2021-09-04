@@ -2,7 +2,7 @@
   <a ><img title="Built With Love" src="https://forthebadge.com/images/badges/built-with-love.svg" ></a>
 </p>
 
-## Tool is in Testing Mode we are ready to deploy new features shortly 🎉
+## Tool is in Testing Mode we are ready to release new features shortly 🎉
 
 </p>
 <p align="center">
