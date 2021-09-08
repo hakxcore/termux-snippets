@@ -50,6 +50,11 @@ askInstall()
 		  cp $1 $prefix/usr/bin > /dev/null 2>&1;
 		  echo ""$GREEN"Success$RESETBG"
 		  cd ..; installationEnd ; exit 1 || return
+	  elif [[ $1 == "termux-snippets" ]]; then
+     		echo -n "Installing $BLUE$1$RESETBG: "
+      		chmod a+x $1
+      		cp $1 $prefix/usr/bin > /dev/null 2>&1;
+      		echo ""$GREEN"Success$RESETBG"
 	  else 
 		  cd $1 || return 1
 		  echo -n "Installing $BLUE$1$RESETBG: "
