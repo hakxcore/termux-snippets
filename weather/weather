@@ -64,7 +64,7 @@ checkInternet()
 
 update()
 {
-  repositoryName="Termux-snippets" 
+  repositoryName="termux-snippets" 
   githubUserName="hakxcore"
   nameOfInstallFile="install" 
   latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
