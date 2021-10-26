@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Inspired By: Alexander Epstein https://github.com/alexanderepstein
 # Author: Hakxcore https://github.com/hakxcore
 # colores
 RED="$(printf '\033[31m')"
@@ -156,9 +155,9 @@ printMovieInfo()
 
 update()
 {
-  repositoryName="Termux-snippets" #Name of repostiory to be updated ex. Sandman-Lite
-  githubUserName="hakxcore" #username that hosts the repostiory ex. alexanderepstein
-  nameOfInstallFile="install.sh" # change this if the installer file has a different name be sure to include file extension if there is one
+  repositoryName="termux-snippets"
+  githubUserName="hakxcore"
+  nameOfInstallFile="install.sh"
   latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
