@@ -71,7 +71,7 @@ httpGet()
 
 update()
 {
-  repositoryName="Termux-snippets" 
+  repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
   latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags) | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" 
@@ -137,9 +137,8 @@ Usage: ipinfo [flag] <ip-address>
 Examples:
   ipinfo 8.8.8.8 #For your ip address
   ipinfo -a <someone's ip-addr>
-EOF
+  EOF
 }
-
 
 while getopts "a:uvh" opt; do
   case "$opt" in
