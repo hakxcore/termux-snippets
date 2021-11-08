@@ -29,6 +29,17 @@ getConfiguredjp2a()
 	fi
 }
 
+
+getConfiguredpv()
+{
+        if command -v pv &>/dev/null; then
+                configuredjp2a="pv"
+        else
+                echo "This tool needs pv to be installed"
+                echo "Use "apt install jp2a" to install pv firstly"
+	fi
+}
+
 ## Allows to call the users configured client without if statements everywhere
 httpGet()
 {
@@ -160,7 +171,7 @@ main(){
     mv $fileName$num.png Meme
     echo -en "\e[1;2;32m Meme stored in Meme Folder\e[0m"
     echo ""
-    jp2a Meme/$fileName$num.png | lolcat
+    jp2a Meme/$fileName$num.png | pv -qL 15
     echo ""
     xdg-open Meme/$fileName$num.png 
     echo -e "\e[1;2;32m --------------------------MEME SUCCESSFULLY GENRATED------------------------------\e[0m"
