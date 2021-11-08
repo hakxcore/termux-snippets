@@ -45,7 +45,7 @@ getConfiguredjp2a()
                 configuredjp2a="jp2a"
         else
                 echo "This tool needs jp2a to be installed"
-                echo $RED"Use $STRONG"apt install jp2a"$RED to install jp2a$RESETBG"
+                echo $RED"Use $STRONG"apt install jp2a"$RED to install jp2a firstly$RESETBG"
 	fi
 }
 
@@ -56,7 +56,7 @@ getConfiguredpv()
                 configuredpv="pv"
         else
                 echo "This tool needs pv to be installed"
-                echo "Use "apt install pv" to install pv firstly"
+                echo $RED"Use $STRONG"apt install pv"$RED to install pv firstly$RESETBG"
 	fi
 }
 
