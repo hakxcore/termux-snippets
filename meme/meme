@@ -135,7 +135,8 @@ main(){
     read raw_second
     almost_second=$(echo "$raw_second" | awk '{print tolower($0)}')
     second=$(echo "$almost_second" | sed -e 's/ /_/g')
-    curl -s "https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new"| read num && echo $num
+    #curl -s "https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new"| read num
+    num=$RANDOM
     if [ -z "$first" ]
     then
     first=$(echo "_")
@@ -152,7 +153,7 @@ main(){
     curl -s "https://api.memegen.link/images/$bg/$first/$second.png" >> $fileName$num.png || return 1
     if [ -d "Meme" ]
     then
-      echo ""
+      echo "-"
     else
     mkdir Meme
   fi
@@ -161,13 +162,13 @@ main(){
     echo ""
     jp2a Meme/$fileName$num.png | lolcat
     echo ""
-    echo -en "\e[1;2;32m Do you wanna open it[y/n]: \e[0m"
-    read choice
-    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-            xdg-open Meme/$fileName$num.png
-    else 
+    xdg-open Meme/$fileName$num.png 
     echo -e "\e[1;2;32m --------------------------MEME SUCCESSFULLY GENRATED------------------------------\e[0m"
     echo ""
+    echo -en "\e[1;2;32m Do you wanna Delete it[y/n]: \e[0m"
+    read choice
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+            rm -rf Meme/$fileName$num.png
     fi
     return 0
 }
