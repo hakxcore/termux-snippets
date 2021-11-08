@@ -1,5 +1,25 @@
 #!/usr/bin/bash
 # Author: HAKXCORE https://github.com/hakxcore
+#Colors
+currentVersion="2.1.0"
+RED="$(printf '\033[31m')"
+GREEN="$(printf '\033[32m')"
+ORANGE="$(printf '\033[33m')"
+BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"
+CYAN="$(printf '\033[36m')"
+WHITE="$(printf '\033[37m')"
+BLACK="$(printf '\033[30m')"
+REDBG="$(printf '\033[41m')"
+GREENBG="$(printf '\033[42m')"
+ORANGEBG="$(printf '\033[43m')"
+BLUEBG="$(printf '\033[44m')"
+MAGENTABG="$(printf '\033[45m')"
+CYANBG="$(printf '\033[46m')"
+WHITEBG="$(printf '\033[47m')"
+BLACKBG="$(printf '\033[40m')"
+RESETBG="$(printf '\e[0m')"
+BLINK="$(printf '\033[5;31m')"
 currentVersion="2.1.0"
 configuredClient=""
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
@@ -25,7 +45,7 @@ getConfiguredjp2a()
                 configuredjp2a="jp2a"
         else
                 echo "This tool needs jp2a to be installed"
-                echo "Use "apt install jp2a" to install jp2a"
+                echo $RED"Use $STRONG"apt install jp2a"$RED to install jp2a$RESETBG"
 	fi
 }
 
@@ -33,10 +53,10 @@ getConfiguredjp2a()
 getConfiguredpv()
 {
         if command -v pv &>/dev/null; then
-                configuredjp2a="pv"
+                configuredpv="pv"
         else
                 echo "This tool needs pv to be installed"
-                echo "Use "apt install jp2a" to install pv firstly"
+                echo "Use "apt install pv" to install pv firstly"
 	fi
 }
 
@@ -136,6 +156,7 @@ EOF
 main(){
     clear
     getConfiguredjp2a
+    getConfiguredpv
     echo -en "\e[1;2;32m Enter the name for the meme's background (Ex. buzz, doge, blb ): \e[0m"
     read bg
     echo -en "\e[1;2;32m Enter text for first line: \e[0m"
