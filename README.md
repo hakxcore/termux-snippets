@@ -18,7 +18,7 @@
 </p>
 
 
-# TOOLS
+# TOOLS & USAGE
 <details>
 <summary>Cheat</summary>
   
