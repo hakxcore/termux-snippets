@@ -111,8 +111,9 @@ checkInternet()
 
 main()
 {
+	hardtxt=6f191297a455af
         getConfiguredjq
-        curl -s ipinfo.io/$IP?token=6f191297a455af -o file.json
+        curl -s ipinfo.io/$IP?$hardtxt -o file.json
         cat file.json | jq
         rm -rf file.json
         exit 0
