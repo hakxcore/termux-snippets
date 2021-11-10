@@ -137,8 +137,8 @@ Usage: ipinfo [flag] <ip-address>
 
 Examples:
   ipinfo 8.8.8.8 #For your ip address
-  ipinfo -a <someone's ip-addr>
-  EOF
+  ipinfo -a <someone^s ip-addr>
+EOF
 }
 
 while getopts "a:uvh" opt; do
