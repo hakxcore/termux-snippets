@@ -1,25 +1,15 @@
 #!/usr/bin/env bash
 # Inspired by: Alexander Epstein https://github.com/alexanderepstein
 # Author: Hakxcore https://github.com/hakxcore
-RED="$(printf '\033[31m')"
-GREEN="$(printf '\033[32m')"
-ORANGE="$(printf '\033[33m')"
-BLUE="$(printf '\033[34m')"
-MAGENTA="$(printf '\033[35m')"
-CYAN="$(printf '\033[36m')"
-WHITE="$(printf '\033[37m')"
-BLACK="$(printf '\033[30m')"
-REDBG="$(printf '\033[41m')"
-GREENBG="$(printf '\033[42m')"
-ORANGEBG="$(printf '\033[43m')"
-BLUEBG="$(printf '\033[44m')"
-MAGENTABG="$(printf '\033[45m')"
-CYANBG="$(printf '\033[46m')"
-WHITEBG="$(printf '\033[47m')"
-BLACKBG="$(printf '\033[40m')"
-RESETBG="$(printf '\e[0m')"
-BLINK="$(printf '\033[5;31m')"
-currentVersion="2.1.0"
+
+##colors
+RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
+MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
+REDBG="$(printf '\033[41m')", GREENBG="$(printf '\033[42m')", ORANGEBG="$(printf '\033[43m')", BLUEBG="$(printf '\033[44m')", 
+MAGENTABG="$(printf '\033[45m')", CYANBG="$(printf '\033[46m')", WHITEBG="$(printf '\033[47m')", BLACKBG="$(printf '\033[40m')",
+RESETBG="$(printf '\e[0m')", BLINK="$(printf '\033[5;31m')"
+
+currentVersion="2.1.2"
 configuredClient=""
 configuredPython=""
 
@@ -51,17 +41,19 @@ httpGet()
   esac
 }
 
+##Check for internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
+##This function determines the latest version of termux-snippets and if available installs them
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -96,6 +88,7 @@ update()
   fi
 }
 
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -118,6 +111,7 @@ Example:
 EOF
 }
 
+##Expand URL
 expandURL()
 {
   testURL=$( echo $1 | cut -c1-8 )
@@ -140,6 +134,7 @@ fi
   returnedURL=$(echo $response)
 }
 
+##Function for shortning a url
 shortenURL()
 {
 newURL=$1
@@ -152,6 +147,7 @@ response3=$(httpGet http://curl -F shorten=$newURL https://0x0.st)
 shortenedURL3=$(echo $response3)
 }
 
+##Prints results on screen
 printExpandedResults()
 {
   cat <<EOF
@@ -162,6 +158,7 @@ printExpandedResults()
 EOF
 }
 
+##Print Shortened(decrypted) url on screen
 printShortenedResults()
 {
   cat <<EOF
@@ -177,7 +174,7 @@ EOF
 
 getConfiguredClient || exit 1
 
-
+##Options(flags)
 while getopts "e:s:uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -207,6 +204,7 @@ while getopts "e:s:uvh" opt; do
   esac
 done
 
+##Driver
 if  [[ $expand == "true" && $shorten == "true" ]];then
   echo "Error: the -e and the -s options are mutually exclusive" >&2
   exit 1

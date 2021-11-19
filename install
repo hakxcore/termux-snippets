@@ -24,6 +24,15 @@ BLINK="$(printf '\033[5;31m')"
 declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shodan shorturl termux-snippets todo transfer weather)
 prefix="/data/data/com.termux/files"
 
+checkDialog()
+{
+	if  command -v dialog &>/dev/null; then
+		echo ""
+	else
+		echo $BLUE"\tdialog should be installed"$RESETBG
+		echo $BLUE"\tuse $RED'apt install dialog'$BLUE firstly"$RESETBG
+	fi 
+}
 
 installRequirements()
 {
@@ -45,32 +54,132 @@ installationEnd()
 
 askInstall()
 {
-  read -p "$BLUE>$RESETBG Do you wish to install $BLUE$1$RESETBG [Y/n]: " answer
-  answer=${answer:-Y}
+		checkDialog
+		DIALOG_CANCEL=1
+		DIALOG_ESC=255
+		HEIGHT=0
+		WIDTH=0
 
-  if [[ "$answer" == [Yy] ]]; then
-	  if [[ $1 == "weather" ]]; then
-		  cd $1 || return 1
-		  echo -n "Installing $BLUE$1$RESETBG: "
-		  chmod a+x $1
-		  cp $1 $prefix/usr/bin > /dev/null 2>&1;
-		  echo ""$GREEN"Success$RESETBG"
-		  cd ..; installationEnd ; exit 1 || return
-	  elif [[ $1 == "termux-snippets" ]]; then
-     		echo -n "Installing $BLUE$1$RESETBG: "
-      		chmod a+x $1
-      		cp $1 $prefix/usr/bin > /dev/null 2>&1;
-      		echo ""$GREEN"Success$RESETBG"
-	  else 
-		  cd $1 || return 1
-		  echo -n "Installing $BLUE$1$RESETBG: "
-		  chmod a+x $1
-		  cp $1 $prefix/usr/bin > /dev/null 2>&1;
-		  echo ""$GREEN"Success$RESETBG"
-		  cd .. || return 1
-	  fi
-  fi
+	display_result() {
+	  dialog --title "$1" \
+	    --no-collapse \
+	    --msgbox "$result" 0 0
+	}
+
+	while true; do
+	  exec 3>&1
+	  selection=$(dialog \
+	    --backtitle "From @hakxcore(https://github.com/hakxcore)" \
+	    --title "termux-snippets" \
+	    --clear \
+	    --cancel-label "Exit" \
+	    --menu "Choose OS:" 15 40 5 \
+	    	"1" "Termux" \
+			"2" "Debian"
+	    2>&1 1>&3)
+	  exit_status=$?
+	  exec 3>&-
+	  ##handle termination error 
+	  case $exit_status in
+	    $DIALOG_CANCEL)
+	      clear
+	      echo "installation terminated."
+	      exit
+	      ;;
+	    $DIALOG_ESC)
+	      clear
+	      echo "installation aborted." >&2
+	      exit 1
+	      ;;
+	  esac
+	  
+	  ##Operating system Selection 
+	  case $selection in
+	    0 )
+	      clear
+	      echo "installation terminated."
+	      ;;
+	    1 )
+			termux=$(dialog \
+			    --backtitle "From @hakxcore(https://github.com/hakxcore)" \
+			    --title "termux-snippets" \
+			    --clear \
+			    --cancel-label "Exit" \
+			    --menu "Choose OS:" 15 40 5 \
+			    	"1" "Install All" \
+					"2" "Install One by One"
+			    2>&1 1>&3)
+			    exit_statuss=$?
+			    ##Main programme termination error handle
+			    case $exit_statuss in
+			    $DIALOG_CANCEL)
+			      clear
+			      echo "Installation terminated."
+			      exit
+			      ;;
+			    $DIALOG_ESC)
+			      clear
+			      echo "Installation aborted." >&2
+			      exit 1
+			      ;;
+			  	esac
+
+			  	##Installation on termux
+			  	case $termux in
+				    ##programme termination error handel
+				    0 )
+				    	clear
+				    	echo "installation terminated."
+				    ;;
+				    
+				    ##Install all snippets at once
+				    1 )
+						installAll
+					;;
+
+					##Install all snippets one by one
+					2 )
+						installOneByOne
+					;;
+				esac
+
+	      ;;
+	    2 )
+			##Debian OS
+	      ;;
+	  esac
+	done
 }
+
+installOneByOne()
+{
+	read -p "$BLUE>$RESETBG Do you wish to install $BLUE$1$RESETBG [Y/n]: " answer
+						  answer=${answer:-Y}
+
+						  if [[ "$answer" == [Yy] ]]; then
+							  if [[ $1 == "weather" ]]; then
+								  cd $1 || return 1
+								  echo -n "Installing $BLUE$1$RESETBG: "
+								  chmod a+x $1
+								  cp $1 $prefix/usr/bin > /dev/null 2>&1;
+								  echo ""$GREEN"Success$RESETBG"
+								  cd ..; installationEnd ; exit 1 || return
+							  elif [[ $1 == "termux-snippets" ]]; then
+						     		echo -n "Installing $BLUE$1$RESETBG: "
+						      		chmod a+x $1
+						      		cp $1 $prefix/usr/bin > /dev/null 2>&1;
+						      		echo ""$GREEN"Success$RESETBG"
+							  else 
+								  cd $1 || return 1
+								  echo -n "Installing $BLUE$1$RESETBG: "
+								  chmod a+x $1
+								  cp $1 $prefix/usr/bin > /dev/null 2>&1;
+								  echo ""$GREEN"Success$RESETBG"
+								  cd .. || return 1
+							  fi
+						  fi
+}
+
 
 updateTool()
 {

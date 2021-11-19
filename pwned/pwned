@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.0"
+currentVersion="2.1.2"
 configuredClient=""
 configuredPython=""
 
@@ -32,6 +32,7 @@ httpGet()
   esac
 }
 
+##Determines if python is installed or not
 getConfiguredPython()
 {
   if command -v python3 &>/dev/null; then
@@ -46,6 +47,7 @@ getConfiguredPython()
   fi
 }
 
+##Determines the version of python
 if [[ $(uname) != "Darwin" ]]; then
   python()
   {
@@ -56,6 +58,7 @@ if [[ $(uname) != "Darwin" ]]; then
   }
 fi
 
+##Checks the internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
@@ -75,6 +78,7 @@ getPwned()
   unset info # done with the JSON response not needed anymore
 }
 
+##Print the fetched data
 printPwned()
 {
   echo
@@ -87,13 +91,13 @@ printPwned()
   echo
 }
 
-
+##This function determines the latest version of termux-snippets if available and installs them
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -128,6 +132,7 @@ update()
   fi
 }
 
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -145,10 +150,11 @@ Examples:
 EOF
 }
 
+##Get configured Python
 if [[ $(uname) != "Darwin" ]]; then getConfiguredPython || exit 1; fi
 getConfiguredClient || exit 1
 
-
+##Options(flags)
 while getopts "uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -170,6 +176,7 @@ while getopts "uvh" opt; do
   esac
 done
 
+##Driver here
 if [[ $1 == "update" ]]; then
   checkInternet || exit 1
   update

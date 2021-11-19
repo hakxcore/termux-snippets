@@ -1,10 +1,14 @@
-#!/usr/bin/env bash
+#/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-# colors 
-BLUE="$(printf '\033[34m')"
-RESETBG="$(printf '\e[0m')"
-GREEN="$(printf '\033[32m')"
-currentVersion="2.1.0"
+
+##colors 
+RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
+MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
+REDBG="$(printf '\033[41m')", GREENBG="$(printf '\033[42m')", ORANGEBG="$(printf '\033[43m')", BLUEBG="$(printf '\033[44m')", 
+MAGENTABG="$(printf '\033[45m')", CYANBG="$(printf '\033[46m')", WHITEBG="$(printf '\033[47m')", BLACKBG="$(printf '\033[40m')",
+RESETBG="$(printf '\e[0m')", BLINK="$(printf '\033[5;31m')"
+
+currentVersion="2.1.2"
 configuredClient=""
 artist="false"
 song="false"
@@ -27,6 +31,7 @@ getConfiguredClient()
   fi
 }
 
+##Determines is python is installed or not
 getConfiguredPython()
 {
   if command -v python3 &>/dev/null; then
@@ -41,6 +46,7 @@ getConfiguredPython()
   fi
 }
 
+##This function checks for the version of python
 if [[ $(uname) != "Darwin" ]]; then
   python()
   {
@@ -66,8 +72,6 @@ AccessJsonElement() {
   return "$?"
 }
 
-
-
 ## Allows to call the users configured client without if statements everywhere
 httpGet()
 {
@@ -79,12 +83,13 @@ httpGet()
   esac
 }
 
+##This function determines for the latest version of the termux-snippets if available then updates them
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -115,11 +120,13 @@ update()
   fi
 }
 
+##Checks for the internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
+##Get lyrics of song 
 getLyrics()
 {
   encodedArtist=$(echo "$1" | sed s/" "/%20/g | sed s/"&"/%26/g | sed s/,/%2C/g | sed s/-/%2D/g)
@@ -129,6 +136,7 @@ getLyrics()
   if [[ $lyrics == "" ]];then { echo "Error: no lyrics found!"; return 1; }; fi
 }
 
+##This function prints the fetched lyrics on the screen
 printLyrics()
 {
   if [[ $filePath == "" ]];then echo -e "$GREEN$lyrics$RESETBG"
@@ -145,6 +153,7 @@ printLyrics()
    fi
 }
 
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -166,7 +175,7 @@ Examples:
 EOF
 }
 
-
+##Options(flags)
 while getopts "f:a:s:uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2

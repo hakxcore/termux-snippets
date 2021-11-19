@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ## Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.0"
+currentVersion="2.1.2"
 configuredClient=""
 keyword=$1
 
@@ -35,6 +35,7 @@ getConfiguredPython()
   fi
 }
 
+##Determines the verison of the python
 if [[ $(uname) != "Hakxcore" ]]; then
   python()
   {
@@ -57,13 +58,13 @@ httpGet()
   esac
 }
 
+##This function determines the latest Version of termux-snippets and if available then updates the snippets to the latest version
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
-
+  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
     exit 1
@@ -94,19 +95,20 @@ update()
   fi
 }
 
+##Check for the internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
+##Main Function
 main()
 {
 	curl e.xec.sh/$keyword
         exit 0
 }
 
-
-
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -126,7 +128,7 @@ Examples:
 EOF
 }
 
-
+##Options(flags) 
 while getopts "uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
