@@ -1,7 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/python3
 # EASY-INSTALL-ENTRY-SCRIPT: 'shodan==1.25.0','console_scripts','shodan'
-#Imported from opensource just enjoy the functionality #hakxcore
-
 import re
 import sys
 

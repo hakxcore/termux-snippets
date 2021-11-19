@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ## Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.2"
+currentVersion="2.1.0"
 configuredClient=""
 Newsabout=$1
 
@@ -21,7 +21,7 @@ getConfiguredClient()
   fi
 }
 
-##Determines weather python is intalled or not
+
 getConfiguredPython()
 {
   if command -v python3 &>/dev/null; then
@@ -36,7 +36,6 @@ getConfiguredPython()
   fi
 }
 
-##Determines the version of python
 if [[ $(uname) != "Hakxcore" ]]; then
   python()
   {
@@ -64,7 +63,7 @@ update()
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -96,20 +95,19 @@ update()
   fi
 }
 
-##Checks the internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
-##Main function
 main()
 {
 	curl getnews.tech/$Newsabout
         exit 0
 }
 
-##Usage and Help
+
+
 usage()
 {
   cat <<EOF
@@ -128,7 +126,7 @@ Examples:
 EOF
 }
 
-##Options(flags)
+
 while getopts "uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -149,7 +147,6 @@ while getopts "uvh" opt; do
   esac
 done
 
-##Driver here
 if [[ $# == "0" ]]; then
 	getConfiguredClient || exit 0
 	main || exit 0

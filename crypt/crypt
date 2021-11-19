@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # Author: hakxcore
-currentVersion="2.1.2"
+currentVersion="2.1.0"
 state=""
 configuredClient=""
 
-#Chech weather openssl is installed or not
 checkOpenSSL()
 {
   if  ! command -v openssl &>/dev/null; then
@@ -15,7 +14,6 @@ checkOpenSSL()
   fi
 }
 
-#Check iternet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
@@ -65,14 +63,14 @@ decrypt()
   echo "Successfully decrypted"
 }
 
-#This function checks for the latest version if available and updates the snippets
 update()
 {
  
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" )
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" )
+
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
     exit 1
@@ -106,7 +104,7 @@ update()
   fi
 }
 
-#Usage and Help
+
 usage()
 {
   cat <<EOF
@@ -129,7 +127,6 @@ EOF
 
 checkOpenSSL || exit 1
 
-#Options(flags)
 while getopts "huve:d:" opt; do ## alows for using options in bash
   case $opt in
     e)  ## when trying to encrypt run this
@@ -177,7 +174,6 @@ while getopts "huve:d:" opt; do ## alows for using options in bash
   esac
 done
 
-#Driver
 if [[ $# == 0 ]]; then
   usage
   exit 0

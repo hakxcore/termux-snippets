@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
 # Author: hakxcore
-# Special thanks to Jake Meyer   Github: https://github.com/jakewmeyer
-
-##colors
-RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
-MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
-REDBG="$(printf '\033[41m')", GREENBG="$(printf '\033[42m')", ORANGEBG="$(printf '\033[43m')", BLUEBG="$(printf '\033[44m')", 
-MAGENTABG="$(printf '\033[45m')", CYANBG="$(printf '\033[46m')", WHITEBG="$(printf '\033[47m')", BLACKBG="$(printf '\033[40m')",
-RESETBG="$(printf '\e[0m')", BLINK="$(printf '\033[5;31m')"
+# Special thanks to Jake Meyer
+# colors
+RED="$(printf '\033[31m')"  
+GREEN="$(printf '\033[32m')"  
+ORANGE="$(printf '\033[33m')"  
+BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"  
+CYAN="$(printf '\033[36m')"  
+WHITE="$(printf '\033[37m')" 
+BLACK="$(printf '\033[30m')"
+REDBG="$(printf '\033[41m')"  
+GREENBG="$(printf '\033[42m')"  
+ORANGEBG="$(printf '\033[43m')"  
+BLUEBG="$(printf '\033[44m')"
+MAGENTABG="$(printf '\033[45m')"  
+CYANBG="$(printf '\033[46m')" 
+WHITEBG="$(printf '\033[47m')"
+BLACKBG="$(printf '\033[40m')"
+RESETBG="$(printf '\e[0m')"
+BLINK="$(printf '\033[5;31m')"
 
 currentVersion="2.1.0"
 configuredClient=""
@@ -40,7 +52,7 @@ httpGet()
   esac
 }
 
-##Usage and Help
+# Parse arguments passed + help formatting
 usage() {
   cat <<EOF
 Geo
@@ -142,13 +154,12 @@ specific_geo() {
   fi
 }
 
-##This function check for the latest Version of termux-snippets and  if available then updates the snippets 
 update()
 {
   repositoryName="termux-snippets"
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" )
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" )
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
     exit 1
@@ -182,7 +193,6 @@ update()
   fi
 }
 
-##Checks for the internet connectivity
 checkInternet() {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }

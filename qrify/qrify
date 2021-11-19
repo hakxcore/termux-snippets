@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.2"
+currentVersion="2.1.0"
 multiline="0" # flag that indicates multiline option
 fileoutput="0" # flag indicating the -f option
 
-## This function determines which http get tool the system has installed and returns an error if there isn't one
 getConfiguredClient()
 {
   if  command -v curl &>/dev/null; then
@@ -32,7 +31,6 @@ httpGet()
   esac
 }
 
-##Determines if python is installed or not
 getConfiguredPython()
 {
   if command -v python3 &>/dev/null; then
@@ -47,7 +45,6 @@ getConfiguredPython()
   fi
 }
 
-##Determines the version of python
 if [[ $(uname) != "Darwin" ]]; then
   python()
   {
@@ -59,13 +56,12 @@ if [[ $(uname) != "Darwin" ]]; then
   }
 fi
 
-##This function determines the latest version of termux-snippets and if available installs them
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -101,7 +97,6 @@ update()
   fi
 }
 
-##Making qr-code
 makeqr()
 {
   input=$(echo $input | sed s/" "/%20/g ) ## replace all spaces in the sentence with HTML-encoded space %20
@@ -117,7 +112,6 @@ makeQRFile() {
         httpGet "api.qrserver.com/v1/create-qr-code/?size=150x150&data=$input" > "$fileName"
 }
 
-##If you wanna save the qr-code to a file
 addFileExt() {
   if ! echo "$fileName" | grep -E -q ".*\.png$|.*\.PNG$"
   then
@@ -125,7 +119,6 @@ addFileExt() {
   fi
 }
 
-##Make multiline qr-code
 makeMultiLineQr()
 {
   if [[ ${configuredClient} != "curl" ]]; then ## prevent usage without curl it is unreliable
@@ -165,13 +158,11 @@ decodeQR() {
   fi
 }
 
-##Check for internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
-##Usage and Help
 usage()
 {
   cat <<EOF
@@ -202,7 +193,7 @@ EOF
 
 getConfiguredClient || exit 1
 
-##Options(flags)
+
 while getopts "d:f:m:hvu*:" option
 do
   case "${option}" in
@@ -220,7 +211,6 @@ do
   esac
 done
 
-##Driver
 if [[ $# == "0" ]]; then
   usage
   exit 0

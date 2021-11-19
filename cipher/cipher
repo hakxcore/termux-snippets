@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.2"
+currentVersion="2.1.0"
 configuredClient=""
-
 #colors
 RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
 MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
@@ -66,13 +65,12 @@ httpGet()
   esac
 }
 
-##This function determines the latest version of termux-snippets if available and install them
 update()
 {
   repositoryName="termux-snippets"
   githubUserName="hakxcore"
   nameOfInstallFile="install"
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+") #always grabs the tag without the v option
+  latestVersion=$(curl -s https://api.github.com/repos/hakxcore/termux-snippets/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+") #always grabs the tag without the v option
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
     exit 1
@@ -102,13 +100,11 @@ update()
   fi
 }
 
-##Check internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
-##Function for encryption
 encryptText()
 {
 	echo -e "$GREEN---------(Cipher Text1)--------$RESETBG"
@@ -122,7 +118,6 @@ encryptText()
 	echo -e "$GREEN-------------------------------$RESETBG"
 }
 
-##Function for decrytion
 decryptText()
 {
 	echo ""
@@ -137,7 +132,8 @@ decryptText()
 	echo -e "$GREEN-------------------------------$RESETBG"
 }
 
-##Usage and Help
+
+
 usage()
 {
   cat <<EOF
@@ -158,7 +154,7 @@ Examples:
 EOF
 }
 
-##Options(flags)
+
 while getopts "e:d:uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -189,7 +185,6 @@ while getopts "e:d:uvh" opt; do
   esac
 done
 
-##Driver
 # special set of first arguments that have a specific behavior across tools
 if [[ $# == "0" ]]; then
   getConfiguredjq || exit 1

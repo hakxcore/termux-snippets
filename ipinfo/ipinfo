@@ -21,7 +21,6 @@ getConfiguredClient()
   fi
 }
 
-##This function determines is jq pkg installed or not and returns an error if there isnt one.
 getConfiguredjq()
 {
         if  command -v jq &>/dev/null; then
@@ -33,7 +32,7 @@ getConfiguredjq()
         fi
 }
 
-##Determines weather python is installed or not
+
 getConfiguredPython()
 {
   if command -v python3 &>/dev/null; then
@@ -48,7 +47,6 @@ getConfiguredPython()
   fi
 }
 
-##Determines the version of the python
 if [[ $(uname) != "Hakxcore" ]]; then
   python()
   {
@@ -71,13 +69,12 @@ httpGet()
   esac
 }
 
-##This function determines the lates version of termux-snippets and updates if available
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags) | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" 
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags) | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
     exit 1
@@ -107,13 +104,11 @@ update()
   fi
 }
 
-##Checks for the internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
-##Main function
 main()
 {
 	hardtxt=6f191297a455af
@@ -124,7 +119,8 @@ main()
         exit 0
 }
 
-##Usage and Help
+
+
 usage()
 {
   cat <<EOF
@@ -145,7 +141,6 @@ Examples:
 EOF
 }
 
-##Options(flags)
 while getopts "a:uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2

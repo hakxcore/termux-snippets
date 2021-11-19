@@ -1,1 +1,0 @@
-dialog --prgbox   "command" "apt install tree; tree"  10 30

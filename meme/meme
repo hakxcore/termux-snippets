@@ -1,16 +1,27 @@
 #!/usr/bin/bash
 # Author: HAKXCORE https://github.com/hakxcore
-
-##Colors
-RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
-MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
-REDBG="$(printf '\033[41m')", GREENBG="$(printf '\033[42m')", ORANGEBG="$(printf '\033[43m')", BLUEBG="$(printf '\033[44m')", 
-MAGENTABG="$(printf '\033[45m')", CYANBG="$(printf '\033[46m')", WHITEBG="$(printf '\033[47m')", BLACKBG="$(printf '\033[40m')",
-RESETBG="$(printf '\e[0m')", BLINK="$(printf '\033[5;31m')"
-
+#Colors
+currentVersion="2.1.0"
+RED="$(printf '\033[31m')"
+GREEN="$(printf '\033[32m')"
+ORANGE="$(printf '\033[33m')"
+BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"
+CYAN="$(printf '\033[36m')"
+WHITE="$(printf '\033[37m')"
+BLACK="$(printf '\033[30m')"
+REDBG="$(printf '\033[41m')"
+GREENBG="$(printf '\033[42m')"
+ORANGEBG="$(printf '\033[43m')"
+BLUEBG="$(printf '\033[44m')"
+MAGENTABG="$(printf '\033[45m')"
+CYANBG="$(printf '\033[46m')"
+WHITEBG="$(printf '\033[47m')"
+BLACKBG="$(printf '\033[40m')"
+RESETBG="$(printf '\e[0m')"
+BLINK="$(printf '\033[5;31m')"
 currentVersion="2.1.0"
 configuredClient=""
-
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
 {
@@ -28,25 +39,24 @@ getConfiguredClient()
   fi
 }
 
-##This function determines weather jp2q is installed or not
 getConfiguredjp2a()
 {
         if command -v jp2a &>/dev/null; then
                 configuredjp2a="jp2a"
         else
                 echo "This tool needs jp2a to be installed"
-                echo $BLUE"Use $RED"apt install jp2a"$BLUE to install jp2a firstly$RESETBG"
+                echo $RED"Use $STRONG"apt install jp2a"$RED to install jp2a firstly$RESETBG"
 	fi
 }
 
-##Determines weather pv package is installed or not
+
 getConfiguredpv()
 {
         if command -v pv &>/dev/null; then
                 configuredpv="pv"
         else
                 echo "This tool needs pv to be installed"
-                echo $BLUE"Use $RED"apt install pv"$BLUE to install pv firstly$RESETBG"
+                echo $RED"Use $STRONG"apt install pv"$RED to install pv firstly$RESETBG"
 	fi
 }
 
@@ -60,21 +70,17 @@ httpGet()
     fetch) fetch -q "$@" ;;
   esac
 }
-
-##Checks for the imternet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
-
-##This function determines the latest version of termux-snippets and if available then updates them
 update()
 {
   currentVersion=$currentVersion
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -109,7 +115,6 @@ update()
   fi
 }
 
-##Backgrounds to use for memes 
 backGrounds()
 {
   cat <<EOF
@@ -148,18 +153,17 @@ backGrounds()
 EOF
 }
 
-##Main Function
 main(){
     clear
     getConfiguredjp2a
     getConfiguredpv
-    echo -en $BLUE"\tEnter the name for the meme's background (Ex. buzz, doge, blb ): \e[0m"
+    echo -en "\e[1;2;32m Enter the name for the meme's background (Ex. buzz, doge, blb ): \e[0m"
     read bg
-    echo -en $BLUE"\tEnter text for first line: \e[0m"
+    echo -en "\e[1;2;32m Enter text for first line: \e[0m"
     read raw_first
     almost_first=$(echo "$raw_first" | awk '{print tolower($0)}')
     first=$(echo "$almost_first" | sed -e 's/ /_/g')
-    echo -en $BLUE"\tEnter text for second line: \e[0m"
+    echo -en "\e[1;2;32m Enter text for second line: \e[0m"
     read raw_second
     almost_second=$(echo "$raw_second" | awk '{print tolower($0)}')
     second=$(echo "$almost_second" | sed -e 's/ /_/g')
@@ -177,23 +181,23 @@ main(){
     else
       echo ""
     fi
-    echo -e $BLUE" ----------------------------GENRATING MEME FOR YOU--------------------------------$GREEN"
+    echo -e "\e[1;2;32m ----------------------------GENRATING MEME FOR YOU--------------------------------\e[0m"
     curl -s "https://api.memegen.link/images/$bg/$first/$second.png" >> $fileName$num.png || return 1
     if [ -d "Meme" ]
     then
-      echo ""
+      echo "-"
     else
     mkdir Meme
   fi
     mv $fileName$num.png Meme
+    echo -en "\e[1;2;32m Meme stored in Meme Folder\e[0m"
     echo ""
-    jp2a Meme/$fileName$num.png | pv -qL 150
+    jp2a Meme/$fileName$num.png | pv -qL 15
     echo ""
     xdg-open Meme/$fileName$num.png 
     echo -e "\e[1;2;32m --------------------------MEME SUCCESSFULLY GENRATED------------------------------\e[0m"
     echo ""
-    echo -en $BLUE"\tMeme stored in Meme Folder\e[0m"
-    echo -en $BLUE"\n\tDo you wanna Delete it[y/n]: \e[0m"
+    echo -en "\e[1;2;32m Do you wanna Delete it[y/n]: \e[0m"
     read choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
             rm -rf Meme/$fileName$num.png
@@ -201,7 +205,6 @@ main(){
     return 0
 }
 
-##Usage and Help
 usage()
 {
   cat <<EOF
@@ -221,7 +224,8 @@ Examples:
 EOF
 }
 
-##Options(flags)
+
+
 while getopts "d:f:uvhb" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2

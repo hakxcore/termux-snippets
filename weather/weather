@@ -2,13 +2,12 @@
 # Inspired by: Alexander Epstein https://github.com/alexanderepstein
 # Author: Hakxcore https://github.com/hakxcore
 
-currentVersion="2.1.2" 
+currentVersion="2.1.0" 
 LANG="${LANG:-en}"
 locale=$(echo $LANG | cut -c1-2)
 unset configuredClient
 if [[ $(echo $locale | grep -Eo "[a-z A-Z]*" | wc -c) != 3 ]]; then locale="en"; fi
 
-## This function determines which http get tool the system has installed and returns an error if there isn't one
 getConfiguredClient()
 {
   if command -v curl &>/dev/null; then
@@ -25,7 +24,6 @@ getConfiguredClient()
   fi
 }
 
-## This function determines which http get tool the system has installed and returns an error if there isn't one
 httpGet()
 {
   case "$configuredClient" in
@@ -36,7 +34,6 @@ httpGet()
   esac
 }
 
-##Grab your ip information 
 getIPWeather()
 {
   country=$(httpGet ipinfo.io/country) > /dev/null ## grab the country
@@ -54,26 +51,23 @@ getIPWeather()
   fi
 }
 
-##Get you location's weather report
 getLocationWeather()
 {
   args=$(echo "$@" | tr " " + )
   httpGet $locale.wttr.in/${args}
 }
 
-##Checks for internet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
-##This function determines the latest version of termux-snippets if available and installs them
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore"
   nameOfInstallFile="install" 
-  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -109,7 +103,6 @@ update()
   fi
 }
 
-##Usage and Help
 usage()
 {
   cat <<EOF
@@ -137,7 +130,6 @@ EOF
 
 getConfiguredClient || exit 1
 
-##Options(flags)
 while getopts "uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -159,7 +151,6 @@ while getopts "uvh" opt; do
   esac
 done
 
-##Driver
 if [[ $# == "0" ]]; then
   checkInternet || exit 1
   getIPWeather || exit 1
@@ -172,7 +163,7 @@ elif [[ $1 == "update" ]]; then
   update || exit 1
   exit 0
 fi
-##Driver code
+
 checkInternet || exit 1
 if [[ $1 == "m" ]]; then
   getIPWeather "?m" || exit 1
