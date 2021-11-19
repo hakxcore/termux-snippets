@@ -37,19 +37,19 @@ httpGet()
   esac
 }
 
-
+##This function Checks for the insternet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
+##This function determines the latest version of the termux-snippets if available and installs them
 update()
 {
-  
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -84,6 +84,7 @@ update()
   fi
 }
 
+##Usage and Help
 usage()
 {
 cat <<EOF
@@ -115,6 +116,7 @@ Examples:
 EOF
 }
 
+##fetch data about the specific keyword
 getCheatSheet()
 {
   if [[ $# == 1 ]]; then
@@ -161,7 +163,7 @@ checkSpecialPage()
 
 getConfiguredClient || exit 1
 
-
+##Options(flags)
 while getopts "ribuvhis" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -211,6 +213,7 @@ done
 checkSpecialPage $arg1 1
 checkSpecialPage $arg2 2
 
+##Driver
 if [[ $# == 0 ]]; then
   usage
   exit 0

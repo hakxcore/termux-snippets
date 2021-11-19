@@ -1,26 +1,15 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="1.1.0"
+currentVersion="2.1.2"
 configuredClient=""
+
 #colors
-RED="$(printf '\033[31m')"
-GREEN="$(printf '\033[32m')"
-ORANGE="$(printf '\033[33m')"
-BLUE="$(printf '\033[34m')"
-MAGENTA="$(printf '\033[35m')"
-CYAN="$(printf '\033[36m')"
-WHITE="$(printf '\033[37m')"
-BLACK="$(printf '\033[30m')"
-REDBG="$(printf '\033[41m')"
-GREENBG="$(printf '\033[42m')"
-ORANGEBG="$(printf '\033[43m')"
-BLUEBG="$(printf '\033[44m')"
-MAGENTABG="$(printf '\033[45m')"
-CYANBG="$(printf '\033[46m')"
-WHITEBG="$(printf '\033[47m')"
-BLACKBG="$(printf '\033[40m')"
-RESETBG="$(printf '\e[0m')"
-BLINK="$(printf '\033[5;31m')"
+RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
+MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
+REDBG="$(printf '\033[41m')", GREENBG="$(printf '\033[42m')", ORANGEBG="$(printf '\033[43m')", BLUEBG="$(printf '\033[44m')", 
+MAGENTABG="$(printf '\033[45m')", CYANBG="$(printf '\033[46m')", WHITEBG="$(printf '\033[47m')", BLACKBG="$(printf '\033[40m')",
+RESETBG="$(printf '\e[0m')", BLINK="$(printf '\033[5;31m')"
+
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
 {
@@ -38,6 +27,7 @@ getConfiguredClient()
   fi
 }
 
+##This function determines is python installed or not 
 getConfiguredPython()
 {
   if command -v python3 &>/dev/null; then
@@ -52,6 +42,7 @@ getConfiguredPython()
   fi
 }
 
+##Determines the version of python
 if [[ $(uname) != "Hakxcore" ]]; then
   python()
   {
@@ -74,6 +65,7 @@ httpGet()
   esac
 }
 
+##determines weather pv package is installed or not
 getConfiguredpv()
 {
 	if command -v pv &>/dev/null; then
@@ -84,12 +76,13 @@ getConfiguredpv()
 	fi
 }
 
+##This function determines the latest version of the termux-snippets if available and installs them
 update()
 {
   repositoryName="termux-snippets" 
   githubUserName="hakxcore" 
   nameOfInstallFile="install" 
-  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+  latestVersion=$(curl -s https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
 
   if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
     echo "Error: update utility has not been configured correctly." >&2
@@ -120,11 +113,13 @@ update()
   fi
 }
 
+##This function Checks for the insternet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
+##Main function
 main()
 {
 	clear
@@ -168,8 +163,7 @@ main()
         exit 0
 }
 
-
-
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -187,7 +181,7 @@ Examples:
 EOF
 }
 
-
+##Options(flags)
 while getopts "uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -208,6 +202,7 @@ while getopts "uvh" opt; do
   esac
 done
 
+##Driver
 if [[ $# == 0 ]]; then
 	getConfiguredpv || exit 0
         main || exit 0

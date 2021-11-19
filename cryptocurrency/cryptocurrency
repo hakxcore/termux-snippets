@@ -1,29 +1,16 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
 # colors
-RED="$(printf '\033[31m')"  
-GREEN="$(printf '\033[32m')"  
-ORANGE="$(printf '\033[33m')"  
-BLUE="$(printf '\033[34m')"
-MAGENTA="$(printf '\033[35m')"  
-CYAN="$(printf '\033[36m')"  
-WHITE="$(printf '\033[37m')" 
-BLACK="$(printf '\033[30m')"
-REDBG="$(printf '\033[41m')"  
-GREENBG="$(printf '\033[42m')"  
-ORANGEBG="$(printf '\033[43m')"  
-BLUEBG="$(printf '\033[44m')"
-MAGENTABG="$(printf '\033[45m')"  
-CYANBG="$(printf '\033[46m')" 
-WHITEBG="$(printf '\033[47m')"
-BLACKBG="$(printf '\033[40m')"
-RESETBG="$(printf '\e[0m')"
-BLINK="$(printf '\033[5;31m')"
+RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
+MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
+REDBG="$(printf '\033[41m')", GREENBG="$(printf '\033[42m')", ORANGEBG="$(printf '\033[43m')", BLUEBG="$(printf '\033[44m')", 
+MAGENTABG="$(printf '\033[45m')", CYANBG="$(printf '\033[46m')", WHITEBG="$(printf '\033[47m')", BLACKBG="$(printf '\033[40m')",
+RESETBG="$(printf '\e[0m')", BLINK="$(printf '\033[5;31m')"
 
 unset base
 unset exchangeTo
 old="false"
-currentVersion="2.1.0"
+currentVersion="2.1.2"
 unset configuredClient
 
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
@@ -67,6 +54,7 @@ checkValidCurrency()
   fi
 }
 
+##Determines the target currency
 checkTargetCurrency()
 {
   if [[ $1 != "AUD" && $1 != "BRL" \
@@ -177,6 +165,7 @@ checkAmount()
   fi
 }
 
+##This function Checks for the insternet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
@@ -208,6 +197,7 @@ convertCurrency()
 EOF
 }
 
+##Get Graph of a particular crypto
 getGraph()
 {
   echo "Wanna see real time graph[y/n]: "
@@ -220,6 +210,7 @@ getGraph()
   fi
 }
 
+##This function determines the latest version of the termux-snippets if available and installs them
 update()
 {
   repositoryName="termux-snippets" 
@@ -260,6 +251,7 @@ update()
   fi
 }
 
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -281,9 +273,7 @@ Examples:
 EOF
 }
 
-
-
-
+##Options(fags)
 while getopts "c:of:uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -326,7 +316,7 @@ exit 0
 fi
 
 
-
+##Driver
 if [[ $1 == "update" ]]; then
   getConfiguredClient || exit 1
   checkInternet || exit 1 # check if we have a valid internet connection if tht will not work so stop here
