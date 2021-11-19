@@ -17,7 +17,7 @@
   <a href="https://github.com/hakxcore"><img title="Author" src="https://img.shields.io/badge/Author-mukesh%20kumar-2eb2ff.svg?style=for-the-badge&logo=github"></a>
 </p>
 
-# UPDATING THE INSTALLATION PROCESS PLEASE BEAR WITH ME 👍
+# UPDATING THE INSTALLATION PROCESS PLEASE BARE WITH ME 👍
 # TOOLS & USAGE
 <details>
 <summary>Cheat</summary>
