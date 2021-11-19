@@ -2,7 +2,7 @@
 # Inspired by: Alexander Epstein https://github.com/alexanderepstein
 # Author: Hakxcore https://github.com/hakxcore
 
-currentVersion="2.1.0" 
+currentVersion="2.1.2" 
 LANG="${LANG:-en}"
 locale=$(echo $LANG | cut -c1-2)
 unset configuredClient
@@ -164,6 +164,7 @@ elif [[ $1 == "update" ]]; then
   exit 0
 fi
 
+##Driver
 checkInternet || exit 1
 if [[ $1 == "m" ]]; then
   getIPWeather "?m" || exit 1

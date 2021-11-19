@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.0"
+currentVersion="2.1.2"
 configuredClient=""
+
 #colors
 RED="$(printf '\033[31m')", GREEN="$(printf '\033[32m')", ORANGE="$(printf '\033[33m')", BLUE="$(printf '\033[34m')",
 MAGENTA="$(printf '\033[35m')", CYAN="$(printf '\033[36m')", WHITE="$(printf '\033[37m')", BLACK="$(printf '\033[30m')", 
@@ -65,6 +66,7 @@ httpGet()
   esac
 }
 
+##This function determines the latest version of the termux-snippets if available and installs them
 update()
 {
   repositoryName="termux-snippets"
@@ -100,11 +102,13 @@ update()
   fi
 }
 
+##This function Checks for the insternet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
+##Function for encryption
 encryptText()
 {
 	echo -e "$GREEN---------(Cipher Text1)--------$RESETBG"
@@ -118,6 +122,7 @@ encryptText()
 	echo -e "$GREEN-------------------------------$RESETBG"
 }
 
+##Functon for decryption
 decryptText()
 {
 	echo ""
@@ -132,8 +137,7 @@ decryptText()
 	echo -e "$GREEN-------------------------------$RESETBG"
 }
 
-
-
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -154,7 +158,7 @@ Examples:
 EOF
 }
 
-
+##Options(flags)
 while getopts "e:d:uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -185,6 +189,7 @@ while getopts "e:d:uvh" opt; do
   esac
 done
 
+##Driver
 # special set of first arguments that have a specific behavior across tools
 if [[ $# == "0" ]]; then
   getConfiguredjq || exit 1

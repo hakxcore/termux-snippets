@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ## Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.0"
+currentVersion="2.1.2"
 configuredClient=""
 Newsabout=$1
 
@@ -21,7 +21,7 @@ getConfiguredClient()
   fi
 }
 
-
+##determines weather python is installed or not
 getConfiguredPython()
 {
   if command -v python3 &>/dev/null; then
@@ -36,6 +36,7 @@ getConfiguredPython()
   fi
 }
 
+##determines the version of python
 if [[ $(uname) != "Hakxcore" ]]; then
   python()
   {
@@ -58,6 +59,7 @@ httpGet()
   esac
 }
 
+##This function determines the latest version of the termux-snippets if available and installs them
 update()
 {
   repositoryName="termux-snippets" 
@@ -95,19 +97,20 @@ update()
   fi
 }
 
+##This function Checks for the insternet connectivity
 checkInternet()
 {
   httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
 }
 
+##Main function
 main()
 {
 	curl getnews.tech/$Newsabout
         exit 0
 }
 
-
-
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -126,7 +129,7 @@ Examples:
 EOF
 }
 
-
+##Options(flags)
 while getopts "uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
@@ -147,6 +150,7 @@ while getopts "uvh" opt; do
   esac
 done
 
+##Driver
 if [[ $# == "0" ]]; then
 	getConfiguredClient || exit 0
 	main || exit 0
