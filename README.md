@@ -17,6 +17,8 @@
   <a href="https://github.com/hakxcore"><img title="Author" src="https://img.shields.io/badge/Author-mukesh%20kumar-2eb2ff.svg?style=for-the-badge&logo=github"></a>
 </p>
 
+### Majpr Update Pending...👨‍💻
+
 # TOOLS & USAGE
 <details>
 <summary>Cheat</summary>
