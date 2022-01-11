@@ -130,6 +130,7 @@ singleUpload()
   httpSingleUpload "$filePath" "$tempFileName"
 }
 
+##Print upload response after 
 printUploadResponse()
 {
 fileID=$(echo $response | cut -d "/" -f 4)
@@ -137,12 +138,14 @@ echo " $BLUE>"$RESETBG"Transfer Download Command: $GREEN transfer -d $fileID $te
 echo " $BLUE>"$RESETBG"Transfer File URL:$GREEN$response$RESETBG"
 }
 
+##Upload file to server
 onetimeUpload()
 {
   response=$(curl -A curl -s -F "file=@$1" http://ki.tc/file/u/)
   downlink=$(echo $response | python -c "import sys, json; print json.load(sys.stdin)['file']['download_page']")
 }
 
+##Print Download link
 printOntimeUpload()
 {
   cat <<EOF
@@ -150,6 +153,7 @@ printOntimeUpload()
 EOF
 }
 
+##Download file from the link
 httpDownload()
 {
   if [[ -d Trans-download ]]; then
@@ -161,6 +165,7 @@ httpDownload()
  echo "File saved in "$BLUE"Trans-download"$RESETBG" dir"
 }
 
+##Usage and Help
 usage()
 {
   cat <<EOF
@@ -185,6 +190,7 @@ Examples:
 EOF
 }
 
+##Options(flags)
 while getopts "o:d:uvh" opt; do
   case "$opt" in
     \?) echo "Invalid option: -$OPTARG" >&2
