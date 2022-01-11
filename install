@@ -2,24 +2,6 @@
 ## Author: Hakxcore https://github.com/hakxcore
 ## Colors
 currentVersion="2.1.0"
-RED="$(printf '\033[31m')"
-GREEN="$(printf '\033[32m')"
-ORANGE="$(printf '\033[33m')"
-BLUE="$(printf '\033[34m')"
-MAGENTA="$(printf '\033[35m')"
-CYAN="$(printf '\033[36m')"
-WHITE="$(printf '\033[37m')"
-BLACK="$(printf '\033[30m')"
-REDBG="$(printf '\033[41m')"
-GREENBG="$(printf '\033[42m')"
-ORANGEBG="$(printf '\033[43m')"
-BLUEBG="$(printf '\033[44m')"
-MAGENTABG="$(printf '\033[45m')"
-CYANBG="$(printf '\033[46m')"
-WHITEBG="$(printf '\033[47m')"
-BLACKBG="$(printf '\033[40m')"
-RESETBG="$(printf '\e[0m')"
-BLINK="$(printf '\033[5;31m')"
 
 prefix="/data/data/com.termux/files"
 
@@ -33,14 +15,6 @@ checkDialog()
   fi 
 }
 
-installRequirements()
-{
-  sudo apt install jp2a lolcat curl 
-}
-
-declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shareterminal shodan shorturl termux-snippets todo transfer weather)
-prefix="/data/data/com.termux/files"
-
 # while-menu-dialog: a menu driven Operating system chooseing Installation  program
 
 DIALOG_CANCEL=1
@@ -49,8 +23,9 @@ HEIGHT=0
 WIDTH=0
 
 display_termux() {
-  dialog --prgbox $1 ./termuxinstallation 50 80
-  dialog --colors --infobox "\Zb\Z1Installation \Z5Successful" 3 12
+  dialog \
+	  --prgbox $1 ./termuxinstallation 50 80
+	  --cancel-label "exit"
 }
 
 display_debian() {
@@ -59,15 +34,14 @@ display_debian() {
     --msgbox "Hola $result Debian User" 30 50
 }
 
-apt install installRequirements -y
-checkDialog
+#checkDialog
 while true; do
   exec 3>&1
   selection=$(dialog \
     --backtitle "Hakxcore Here" \
     --title "termux-snippets" \
     --clear \
-    --cancel-label "Exit" \
+    --cancel-label "cancel" \
     --menu "Choose OS:" $HEIGHT $WIDTH 4 \
     "1" "Termux" \
     "2" "Debian OS" \
