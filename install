@@ -24,7 +24,7 @@ WIDTH=0
 
 display_termux() {
   dialog \
-	  --prgbox $1 ./termuxinstallation 50 80
+	  --prgbox $1 ./termuxinstallation 50 80 \
 	  --cancel-label "exit"
 }
 
