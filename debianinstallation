@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+## Author: Hakxcore https://github.com/hakxcore
+## Colors
+currentVersion="2.1.2"
+
+declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shareterminal shodan shorturl termux-snippets todo transfer weather)
+prefix="/usr/bin"
+
+rootCheck()
+{
+}
+
+
+installationEnd()
+{
+  echo -n "( •_•)"
+  sleep .75
+  echo -n -e "\r( •_•)>⌐■-■"
+  sleep .75
+  echo -n -e "\r               "
+  echo  -e "\r(⌐■_■)"
+  sleep .5
+  echo "Termux Snippets version $currentVersion"
+  echo  "https://github.com/hakxcore/Termux-snippets"
+}
+
+installOneByOne()
+{
+        echo "___________________________________________"
+        echo -n "Installing $1"
+                if [[ $1 == "weather" ]]; then
+                  cd $1 || return 1
+                  chmod a+x $1
+                  cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+                  echo -e "\n✔Success"
+                  cd ..; installationEnd ; exit 0 || return
+                elif [[ $1 == "termux-snippets" ]]; then
+                        #cd .. || return 1
+                        chmod a+x $1
+                        cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+                      echo -e "\n✔Success"
+                      #cd installation
+                else
+                  cd $1 || return 1
+                  chmod a+x $1
+                  cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+                  echo -e "\n✔Success"
+                  cd .. || return 1
+                fi
+}
+
+
+updateTool()
+{
+  if [[ -f  $prefix/$1 ]]; then
+    cd $1 || return 1
+    git pull origin
+    echo -n "Installing $BLUE$1$RESETBG: "
+    chmod a+x $1
+    cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+    echo ""$GREEN"Success$RESETBG"
+    cd ..; installationEnd || return 1
+  fi
+}
+
+
+singleInstall()
+{
+  cd $1 || exit 1
+  echo -n "Installing $BLUE$1$RESETBG: "
+  chmod a+x $1
+  cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+  echo ""$GREEN"Success$RESETBG"
+  cd ..; installationEnd || exit 1
+}
+
+##Driver
+  if [[ $2 == "all" ]];then
+    for tool in "${tools[@]}"; do
+      installOneByOne $tool || exit 1
+    done
+  else
+    for tool in "${@:2}"; do
+      installOneByOne $tool || exit 1
+    done
+  fi
+
+if [[ $# == 0 ]]; then
+  for tool in "${tools[@]}"; do
+    installOneByOne $tool || exit 1
+  done
+elif [[ $1 == "update" ]]; then
+  echo "Updating scripts..."
+  for tool in "${tools[@]}"; do
+    updateTool $tool || exit 1
+  done
+  fi
+
+  if [[ $1 == "all" ]]; then
+  for tool in "${tools[@]}"; do
+    installOneByOne $tool || exit 1
+  done
+else
+  installOneByOne $1 || exit 1
+fi
