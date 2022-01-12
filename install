@@ -23,18 +23,14 @@ HEIGHT=0
 WIDTH=0
 
 display_termux() {
-  dialog \
-	  --prgbox $1 ./termuxinstallation 50 80
-	  --cancel-label "exit"
+  dialog --prgbox $1 ./termuxinstallation 50 80
 }
 
 display_debian() {
-  dialog --title "$1" \
-    --no-collapse \
-    --msgbox "Hola $result Debian User" 30 50
+  dialog --prgbox $1 ./debianinstallation 50 80
 }
 
-#checkDialog
+checkDialog
 while true; do
   exec 3>&1
   selection=$(dialog \
