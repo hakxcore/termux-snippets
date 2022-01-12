@@ -125,6 +125,7 @@ Examples:
   weather Tokyo
   weather Moon
   weather mM
+  weather india maharashtra nagpur
 EOF
 }
 
