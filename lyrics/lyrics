@@ -4,7 +4,7 @@
 BLUE="$(printf '\033[34m')"
 RESETBG="$(printf '\e[0m')"
 GREEN="$(printf '\033[32m')"
-currentVersion="2.1.0"
+currentVersion="2.1.2"
 configuredClient=""
 artist="false"
 song="false"

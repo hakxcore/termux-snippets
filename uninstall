@@ -36,7 +36,7 @@ removeTool()
   fi
 }
 
-
+##Driver
 if [[ $1 != "all" ]]; then
   for tool in "${tools[@]}"; do
     askUninstall $tool || exit 1

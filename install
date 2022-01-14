@@ -24,12 +24,16 @@ WIDTH=0
 
 display_termux() {
 <<<<<<< HEAD
+<<<<<<< HEAD
   dialog --prgbox $1 ./termuxinstallation 50 80
 =======
   dialog \
 	  --prgbox $1 ./termuxinstallation 50 80 \
 	  --cancel-label "exit"
 >>>>>>> 4c032608d975b862bdc6f0ff311ba0f7a669f281
+=======
+  dialog --prgbox $1 ./termuxinstallation 50 80
+>>>>>>> 93e18d9348e76cb572319d46b4e6951bb48018b3
 }
 
 display_debian() {
