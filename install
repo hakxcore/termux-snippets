@@ -37,7 +37,7 @@ while true; do
     --backtitle "Hakxcore Here" \
     --title "termux-snippets" \
     --clear \
-    --cancel-label "cancel" \
+    --cancel-label "Exit" \
     --menu "Choose OS:" $HEIGHT $WIDTH 4 \
     "1" "Termux" \
     "2" "Debian OS" \
