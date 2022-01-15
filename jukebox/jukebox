@@ -52,7 +52,7 @@ getConfiguredTetris()
                 configuredTelnet="telnet"
         else
                 echo "This tool needs tetris to be installed"
-		echo "use 'apt install tetris' to install telnet"
+		echo "use 'apt install tetris' to install tetris"
 	fi
 }
 
@@ -121,7 +121,7 @@ checkInternet()
 
 main()
 {
-        getConfiguredtelnet
+        getConfiguredTelnet
 	getConfiguredTetris
 	telnet telehack.com
         exit 0
