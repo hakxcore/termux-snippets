@@ -21,7 +21,7 @@ getConfiguredClient()
   fi
 }
 
-getConfiguredtelnet()
+getConfiguredTelnet()
 {
 	if command -v telnet &>/dev/null; then
 		configuredTelnet="telnet"
@@ -44,6 +44,16 @@ getConfiguredPython()
     echo "Error: This tool requires python to be installed."
     return 1
   fi
+}
+
+getConfiguredTetris()
+{
+        if command -v tetris &>/dev/null; then
+                configuredTelnet="telnet"
+        else
+                echo "This tool needs tetris to be installed"
+		echo "use 'apt install tetris' to install telnet"
+	fi
 }
 
 if [[ $(uname) != "Hakxcore" ]]; then
@@ -112,6 +122,7 @@ checkInternet()
 main()
 {
         getConfiguredtelnet
+	getConfiguredTetris
 	telnet telehack.com
         exit 0
 }
