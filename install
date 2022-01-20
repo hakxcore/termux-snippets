@@ -10,8 +10,8 @@ checkDialog()
   if  command -v dialog &>/dev/null; then
     echo ""
   else
-    echo $BLUE"\tdialog should be installed"$RESETBG
-    echo $BLUE"\tuse $RED'apt install dialog'$BLUE firstly"$RESETBG
+    echo $BLUE"Error: Dialog should be installed"$RESETBG
+    echo $BLUE"use $RED'apt install dialog'$BLUE firstly"$RESETBG
   fi 
 }
 
