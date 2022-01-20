@@ -31,19 +31,19 @@ installOneByOne()
                 if [[ $1 == "weather" ]]; then
                   cd $1 || return 1
                   chmod a+x $1
-      cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+      cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again with root(sudo) privileges."; exit 1; }
                   echo -e "\n✔Success"
                   cd ..; installationEnd ; exit 0 || return
                 elif [[ $1 == "termux-snippets" ]]; then
       #cd .. || return 1
       chmod a+x $1
-      cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+      cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again with root(sudo) privileges."; exit 1; }
                       echo -e "\n✔Success"
           #cd installation
                 else 
                   cd $1 || return 1
                   chmod a+x $1
-                  cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+                  cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again with root(sudo) privileges."; exit 1; }
                   echo -e "\n✔Success"
                   cd .. || return 1
                 fi
@@ -57,7 +57,7 @@ updateTool()
     git pull origin
     echo -n "Installing $BLUE$1$RESETBG: "
     chmod a+x $1
-    cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+    cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again with root(sudo) privileges."; exit 1; }
     echo ""$GREEN"Success$RESETBG"
     cd ..; installationEnd || return 1
   fi
@@ -69,7 +69,7 @@ singleInstall()
   cd $1 || exit 1
   echo -n "Installing $BLUE$1$RESETBG: "
   chmod a+x $1
-  cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again"; exit 1; }
+  cp $1 $prefix > /dev/null 2>&1 || { echo "Failure"; echo "Error copying file, try running install script again with root(sudo) privileges."; exit 1; }
   echo ""$GREEN"Success$RESETBG"
   cd ..; installationEnd || exit 1
 }
