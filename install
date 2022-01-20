@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Author: Hakxcore https://github.com/hakxcore
 ## Colors
-currentVersion="2.1.0"
+currentVersion="2.1.2"
 
 prefix="/data/data/com.termux/files"
 
@@ -12,6 +12,7 @@ checkDialog()
   else
     echo $BLUE"Error: Dialog should be installed"$RESETBG
     echo $BLUE"use $RED'apt install dialog'$BLUE firstly"$RESETBG
+    exit 1
   fi 
 }
 
