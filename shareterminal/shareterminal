@@ -61,7 +61,7 @@ version() {
 }
 
 main() {
-  echo "app is still in development" 
+  echo "app is still in development state" 
 }
 
 ##This function determines the latest version of the termux-snippets if available and installs them
