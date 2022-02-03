@@ -18,7 +18,7 @@
 </p>
 
 <p>
-  <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#Tools & Usage">
+  <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#TOOLS & USAGE">
     <img src="https://dabuttonfactory.com/button.png?t=READ TOOLS&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
   </a>
   <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#installation">
