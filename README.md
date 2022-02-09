@@ -24,7 +24,7 @@
   <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#installation">
     <img src="https://dabuttonfactory.com/button.png?t=INSTALL&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
   </a>
-  <a href="https://github.com/hakxcore/termux-snippets#demo">
+  <a href="https://github.com/hakxcore/termux-snippets#DEMO">
     <img src="https://dabuttonfactory.com/button.png?t=DEMO&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
   </a>
 </p>
@@ -845,6 +845,15 @@ For uninstallation execute uninstall file using bash or copy this command.
 ```bash
  ./uninstall
 ```
+
+</br>
+</br>
+  
+## DEMO 
+  
+[![asciicast](https://asciinema.org/a/467810.svg)](https://asciinema.org/a/467810)
+  
+  
     
 </br>
     
