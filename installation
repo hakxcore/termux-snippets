@@ -7,7 +7,8 @@ declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ip
 
 ##Platform Check
 distr_name=$1
-if [ echo $PREFIX | grep -o "com.termux" ]; then
+if command -v termux-setup-storage  
+then  
   platform="Termux"
   showError="Try execute install script again."
   prefix="/data/data/com.termux/files/"
