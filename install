@@ -3,7 +3,15 @@
 ## Colors
 currentVersion="2.1.2"
 
-prefix="/data/data/com.termux/files"
+##Platform Check
+distr_name=$1
+if [ "$distr_name" == "Android" ]; then
+  platform="Termux"
+  prefix="/data/data/com.termux/files/"
+  else
+    platform="Debian"
+    prefix=""
+fi
 
 checkDialog()
 {
@@ -24,11 +32,11 @@ HEIGHT=0
 WIDTH=0
 
 display_termux() {
-  dialog --prgbox $1 ./termuxinstallation 50 80
+  dialog --prgbox $1 ./installation 50 80
 }
 
 display_debian() {
-  dialog --prgbox $1 ./debianinstallation 50 80
+  dialog --prgbox $1 ./installation 50 80
 }
 
 checkDialog

@@ -9,7 +9,16 @@ RESETBG="$(printf '\e[0m')"  BLINK="$(printf '\033[5;31m')"
 
 declare -a tools=(termux-snippets cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shodan shorturl todo transfer weather)
 all="1"
-prefix=/data/data/com.termux/files
+
+##Platform Check
+distr_name=$1
+if [ "$distr_name" == "Android" ]; then
+  platform="Termux"
+  prefix="/data/data/com.termux/files/"
+  else
+    platform="Debian"
+    prefix=""
+fi
 
 askUninstall()
 {

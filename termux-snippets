@@ -56,7 +56,7 @@ grablatestversion()
 
 checkInternet()
 {
-  httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
+  httpGet github.com > /dev/null 2>&1 || { echo ""$RED"Error: "$GREEN"no active internet connection$RESETBG" >&2; return 1; } # query github with a get request
 }
 
 header()
@@ -87,7 +87,6 @@ echo ""
   printf "\t\t     $BLUE%s$RESETBG\n" "$title"
   printf "\t%s\t%s\n" "$latestver" "$installver"
 }
-
 
 toolMenu()
 {
@@ -190,12 +189,12 @@ installationcheck()
   validTools=()
   for tool in "${tools[@]}"; do
     if [ -e "$prefix/usr/bin/$tool" ]; then
-      check=""$GREEN"Tools Installed Successfully.$RESETBG"
-      state="$GREEN✔$RESETBG";
+      check="$BLUE>$GREEN Snippets Installed Successfully.$RESETBG"
+      state="["$GREEN"✔"$RESETBG"]";
       start=28;
       validTools+=($tool);
     else state="$RED✘$RESETBG"; start=28;
-   	  check=""$REDBG"Warning:$RESETBG "$ORANGE"Tools doesn't installed Correctly, Please try Install again.$RESETBG"
+   	  check=""$REDBG"Warning:$RESETBG "$ORANGE"Snippets doesn't installed Correctly, Please try Install again.$RESETBG"
 	fi
       if $1; then
         echo -n -e "\t\t$BLUE$tool$RESETBG"
