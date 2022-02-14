@@ -9,7 +9,7 @@ declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ip
 distr_name=$1
 if [ "$distr_name" == "Android" ]; then
   platform="Termux"
-  showError="Try running install script again."
+  showError="Try execute install script again."
   prefix="/data/data/com.termux/files/"
   else
     platform="Debian"
