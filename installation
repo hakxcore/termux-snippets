@@ -54,6 +54,7 @@ installation()
                 chmod a+x $1
                 cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo -e "\n✘ Failure"; echo -e "\nError: $showError"; exit 1; }
                 echo -e "\n✔Success"
+                cd .. || return 1
                 
                 else 
                   cd $1 || return 1
