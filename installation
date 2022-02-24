@@ -46,8 +46,15 @@ installation()
       #cd .. || return 1
       chmod a+x $1
       cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo -e "\n✘ Failure"; echo -e "\nError: $showError"; exit 1; }
-                      echo -e "\n✔Success"
-          #cd installation
+                echo -e "\n✔Success"
+                
+                elif [[ $1 == "shodan" ]]; then
+                cd $1 || return 1
+                pip install shodan
+                chmod a+x $1
+                cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo -e "\n✘ Failure"; echo -e "\nError: $showError"; exit 1; }
+                echo -e "\n✔Success"
+                
                 else 
                   cd $1 || return 1
                   chmod a+x $1
