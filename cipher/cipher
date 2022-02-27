@@ -192,7 +192,6 @@ done
 ##Driver
 # special set of first arguments that have a specific behavior across tools
 if [[ $# == "0" ]]; then
-  getConfiguredjq || exit 1
   usage ## if calling the tool with no flags and args chances are you want to return usage
   exit 0
 elif [[ $# == "1" ]]; then
