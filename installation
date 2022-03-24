@@ -15,7 +15,7 @@ then
   else
     platform="Debian"
     showError="Try running install script again with root privileges."
-    prefix=""
+    prefix=" "
 fi
 
 
@@ -34,6 +34,8 @@ installationEnd()
 
 installation()
 {
+  echo $prefix
+  echo $platform
   echo "___________________________________________"
   echo -n "> Installing $1"
                 if [[ $1 == "weather" ]]; then
