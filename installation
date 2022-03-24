@@ -65,6 +65,8 @@ installation()
                   echo -e "\n✔Success"
                   cd .. || return 1
                 fi
+		echo $prefix
+		echo $platform
 }
 
 
