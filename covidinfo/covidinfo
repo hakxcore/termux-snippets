@@ -123,6 +123,7 @@ checkInternet()
 main()
 {
 	clear
+  getConfiguredpv
 	echo ""$BLUE"Please wait.......$RESETBG" | pv -qL 10
 	echo ""$WHITEBG"=================================================================================================================================================================$RESETBG"
 	echo "                                                  "$BLINK$BLACKBG$GREEN"COVID-19 COUNTRY WISE INFORMATION$RESETBG                                                        "
