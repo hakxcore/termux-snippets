@@ -34,8 +34,6 @@ installationEnd()
 
 installation()
 {
-  echo $prefix
-  echo $platform
   echo "___________________________________________"
   echo -n "> Installing $1"
                 if [[ $1 == "weather" ]]; then
@@ -65,8 +63,6 @@ installation()
                   echo -e "\n✔Success"
                   cd .. || return 1
                 fi
-		echo $prefix
-		echo $platform
 }
 
 

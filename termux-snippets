@@ -12,12 +12,15 @@ RESETBG="$(printf '\e[0m')"  BLINK="$(printf '\033[5;31m')"
 
 ##Platform Check
 distr_name=$1
-if [ "$distr_name" == "Android" ]; then
-	platform="Termux"
-	prefix="/data/data/com.termux/files/"
-	else
-		platform="Debian"
-		prefix=""
+if command -v termux-setup-storage  
+then  
+  platform="Termux"
+  showError="Try execute install script again."
+  prefix="/data/data/com.termux/files/"
+  else
+    platform="Debian"
+    showError="Try running install script again with root privileges."
+    prefix=" "
 fi
 
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
