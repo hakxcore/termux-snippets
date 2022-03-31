@@ -12,6 +12,7 @@ all="1"
 
 ##Platform Check
 distr_name=$1
+if command -v termux-setup-storage
 if [ "$distr_name" == "Android" ]; then
   platform="Termux"
   prefix="/data/data/com.termux/files/"
