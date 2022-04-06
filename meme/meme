@@ -176,25 +176,25 @@ main(){
       echo ""
     fi
     echo -e "\e[1;2;32m ----------------------------GENRATING MEME FOR YOU--------------------------------\e[0m"
-    curl -s "https://api.memegen.link/images/$bg/$first/$second.png" >> $fileName$num.png || return 1
+    curl -s "https://api.memegen.link/images/$bg/$first/$second.jpeg" >> $fileName$num.jpeg || return 1
     if [ -d "Meme" ]
     then
       echo "-"
     else
     mkdir Meme
   fi
-    mv $fileName$num.png Meme
+    mv $fileName$num.jpeg Meme
     echo -en "\e[1;2;32m Meme stored in Meme Folder\e[0m"
     echo ""
-    jp2a Meme/$fileName$num.png | pv -qL 15
+    jp2a Meme/$fileName$num.jpeg | pv -qL 15
     echo ""
-    xdg-open Meme/$fileName$num.png 
+    xdg-open Meme/$fileName$num.jpeg 
     echo -e "\e[1;2;32m --------------------------MEME SUCCESSFULLY GENRATED------------------------------\e[0m"
     echo ""
     echo -en "\e[1;2;32m Do you wanna Delete it[y/n]: \e[0m"
     read choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-            rm -rf Meme/$fileName$num.png
+            rm -rf Meme/$fileName$num.jpeg
     fi
     return 0
 }

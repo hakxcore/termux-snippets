@@ -11,8 +11,10 @@ declare -a tools=(termux-snippets cheat cipher covidinfo crypt cryptocurrency ge
 all="1"
 
 ##Platform Check
-distr_name=$1
-if command -v termux-setup-storage
+if command -v termux-setup-storage 
+then
+distr_name=$1  
+fi
 if [ "$distr_name" == "Android" ]; then
   platform="Termux"
   prefix="/data/data/com.termux/files/"
@@ -28,7 +30,7 @@ askUninstall()
     read -r answer
     if [[ "$answer" == [Yy] ]]; then
       echo -n "Removing $1: "
-      rm -f $prefix/usr/bin/$1 > /dev/null 2>&1 || { echo "Failed" ; echo "Error removing file, try running uninstall script again"; exit 1; }
+      rm -f $prefix/usr/bin/$1 > /dev/null 2>&1 || { echo "Failed"; echo "Error removing file, try running uninstall script again"; exit 1; }
       echo ""$GREEN"Success$RESETBG"
     else
       all="0"
