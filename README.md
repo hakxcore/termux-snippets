@@ -850,8 +850,8 @@ For uninstallation execute uninstall file using bash or copy this command.
 </br>
   
 ## DEMO 
-  
-[![asciicast](https://asciinema.org/a/467810.svg)](https://asciinema.org/a/467810)
+
+[![asciicast](https://asciinema.org/a/483057.svg)](https://asciinema.org/a/483057)
   
   
     
