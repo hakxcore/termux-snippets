@@ -115,15 +115,15 @@ checkInternet()
 httpSingleUpload()
 {
   case "$configuredUploadClient" in
-    curl) response=$(curl -A curl -s --upload-file "$1" "https://transfer.sh/$2" | tee /dev/null) || { echo "Failure!"; return 1;};;
-    wget) response=$(wget --progress=dot --method PUT --body-file="$1" "https://transfer.sh/$2" | tee /dev/null) || { echo "Failure!"; return 1;} ;;
+    curl) response=$(curl -s --upload-file "$1" "https://free.keep.sh" | tee /dev/null) || { echo "Failure!"; return 1;};;
+    wget) response=$(wget --progress=dot --method PUT --body-file="$1" "https://free.keep.sh" | tee /dev/null) || { echo "Failure!"; return 1;} ;;
   esac
   echo  "$MAGENTA Success! $RESETBG"
 }
 
 singleUpload()
 {
-  filePath=$(echo $1 | sed s:"~":$HOME:g)
+  filePath=$(echo $1)
   if [ ! -f $filePath ];then { echo "Error: invalid file path"; return 1;}; fi
   tempFileName=$(echo $1 | sed "s/.*\///")
   echo "$BLUE Uploading $tempFileName $RESETBG"
@@ -136,13 +136,16 @@ printUploadResponse()
 fileID=$(echo $response | cut -d "/" -f 4)
 echo " $BLUE>"$RESETBG"Transfer Download Command: $GREEN transfer -d $fileID $tempFileName$RESETBG"
 echo " $BLUE>"$RESETBG"Transfer File URL:$GREEN$response$RESETBG"
+# echo "$RED""Or scan this QR-Code"$RESETBG
+echo -e "\n\n\t Or scan this QR Code"
+qrify $response
 }
 
 ##Upload file to server
 onetimeUpload()
 {
-  response=$(curl -A curl -s -F "file=@$1" http://ki.tc/file/u/)
-  downlink=$(echo $response | python -c "import sys, json; print json.load(sys.stdin)['file']['download_page']")
+  response=$(curl -s -T $1 temp.sh)
+  downlink=$response # | python -c "import sys, json; print json.load(sys.stdin)['file']['download_page']"
 }
 
 ##Print Download link
@@ -151,18 +154,23 @@ printOntimeUpload()
   cat <<EOF
   Download link: $GREEN$downlink$RESETBG
 EOF
+echo -e "\n\n\t Or scan this QR Code"
+qrify $downlink
 }
 
 ##Download file from the link
 httpDownload()
 {
-  if [[ -d Trans-download ]]; then
-    echo "Downloading....."
-    else
-      mkdir Trans-download
-  fi
-  curl -A curl -s https://transfer.sh/$1/$2 -o Trans-download/$2 || echo "Failure";  
- echo "File saved in "$BLUE"Trans-download"$RESETBG" dir"
+  # if [[ -d Trans-download ]]; then
+  #   echo "Downloading....."
+  #   else
+  #     mkdir Trans-download
+  # fi
+  echo "Downloading....."
+  # https://free.keep.sh/9ab64df49d/your-file.txt > your-file.
+  curl -s -L https://free.keep.sh/$1/$2 > $inputFileName || echo "Failure";
+  # curl -A curl -s https://transfer.sh/$2 -o Trans-download/$2 || echo "Failure";  
+ echo "$BLUE""File saved"$RESETBG
 }
 
 ##Usage and Help
@@ -175,7 +183,8 @@ Description: Quickly transfer files from the command line.
 
 Usage: transfer [flags] or transfer [flag] [args] or transfer [filePathToUpload]
   -d  Download a single file
-      First arg: Output file directory
+      First arg
+      : Output file directory
       Second arg: File url id
       Third arg: File name
   -o  Onetime file upload
@@ -215,9 +224,9 @@ while getopts "o:d:uvh" opt; do
       down="true"
       if [ $# -lt 3 ];then { echo "Error: not enough arguments for downloading a file, see the usage"; return 1;};fi
       if [ $# -gt 3 ];then { echo "Error: to many enough arguments for downloading a file, see the usage"; return 1;};fi
-      inputID=$2 #(echo "$*" | sed s/-d//g | sed s/-o//g | cut -d " " -f 2)
+      inputId=$2 #(echo "$*" | sed s/-d//g | sed s/-o//g | cut -d " " -f 2)
       inputFileName=$3 #(echo "$*" | sed s/-d//g | sed s/-o//g | cut -d " " -f 3)
-      httpDownload $inputID $inputFileName
+      httpDownload $inputId $inputFileName
     ;;
     :)  echo "Option -$OPTARG requires an argument." >&2
       exit 1
