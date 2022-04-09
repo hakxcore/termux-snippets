@@ -183,10 +183,8 @@ Description: Quickly transfer files from the command line.
 
 Usage: transfer [flags] or transfer [flag] [args] or transfer [filePathToUpload]
   -d  Download a single file
-      First arg
-      : Output file directory
-      Second arg: File url id
-      Third arg: File name
+      First arg: File url id
+      Second arg: File name
   -o  Onetime file upload
   -u  Update Termux-snippets Tools
   -h  Show the help
@@ -194,7 +192,7 @@ Usage: transfer [flags] or transfer [flag] [args] or transfer [filePathToUpload]
 Examples:
   transfer ~/fileToTransfer.txt
   transfer ~/firstFileToTransfer.txt ~/secondFileToTransfer.txt ~/thirdFileToTransfer.txt
-  transfer -d ~/outputDirectory fileID fileName
+  transfer -d fileID fileName
   transfer -o ~/fileToTransfer.txt
 EOF
 }
