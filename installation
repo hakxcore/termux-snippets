@@ -6,17 +6,44 @@ currentVersion="2.1.2"
 declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shareterminal shodan shorturl termux-snippets todo transfer weather)
 
 ##Platform Check
-distr_name=$1
-if command -v termux-setup-storage  
-then  
-  platform="Termux"
-  showError="Try execute install script again."
-  prefix="/data/data/com.termux/files/"
-  else
-    platform="Debian"
-    showError="Try running install script again with root privileges."
-    prefix=" "
-fi
+# distr_name=$1
+# if command -v termux-setup-storage  
+# then  
+#   platform="Termux"
+#   showError="Try execute install script again."
+#   prefix="/data/data/com.termux/files/"
+#   else
+#     platform="Debian"
+#     showError="Try running install script again with root privileges."
+#     prefix=" "
+# fi
+
+if [[ "$OSTYPE" == linux-android* ]]; then
+            distro="termux"
+            platform="Termux"
+            prefix="/data/data/com.termux/files/"
+            showError="Try execute install script again."
+    fi
+
+    if [ -z "$distro" ]; then
+        distro=$(ls /etc | awk 'match($0, "(.+?)[-_](?:release|version)", groups) {if(groups[1] != "os") {print groups[1]}}')
+        platform="Debian"
+        prefix=""
+        showError="Try running install script again with root privileges."
+    fi
+
+    if [ -z "$distro" ]; then
+        if [ -f "/etc/os-release" ]; then
+            distro="$(source /etc/os-release && echo $ID)"
+        elif [ "$OSTYPE" == "darwin" ]; then
+            distro="darwin"
+            platform="Darwin"
+            prefix=""
+            showError="Try running install script again with root privileges."
+        else 
+            distro="invalid"
+        fi
+    fi
 
 
 installationEnd()
