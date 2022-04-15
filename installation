@@ -5,19 +5,6 @@ currentVersion="2.1.2"
 
 declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shareterminal shodan shorturl termux-snippets todo transfer weather)
 
-##Platform Check
-# distr_name=$1
-# if command -v termux-setup-storage  
-# then  
-#   platform="Termux"
-#   showError="Try execute install script again."
-#   prefix="/data/data/com.termux/files/"
-#   else
-#     platform="Debian"
-#     showError="Try running install script again with root privileges."
-#     prefix=" "
-# fi
-
 if [[ "$OSTYPE" == linux-android* ]]; then
             distro="termux"
             platform="Termux"

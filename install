@@ -4,13 +4,31 @@
 currentVersion="2.1.2"
 
 ##Platform Check
-distr_name=$1
-if [ "$distr_name" == "Android" ]; then
+if [[ "$OSTYPE" == linux-android* ]]; then
+  distro="termux"
   platform="Termux"
   prefix="/data/data/com.termux/files/"
-  else
-    platform="Debian"
+  SUDO=""
+fi
+
+if [ -z "$distro" ]; then
+  distro=$(ls /etc | awk 'match($0, "(.+?)[-_](?:release|version)", groups) {if(groups[1] != "os") {print groups[1]}}')
+  platform="Debian"
+  prefix=""
+  SUDO="sudo"
+fi
+
+if [ -z "$distro" ]; then
+  if [ -f "/etc/os-release" ]; then
+    distro="$(source /etc/os-release && echo $ID)"
+  elif [ "$OSTYPE" == "darwin" ]; then
+    distro="darwin"
+    platform="Darwin"
     prefix=""
+    SUDO="sudo"
+  else 
+    distro="invalid"
+  fi
 fi
 
 checkDialog()
