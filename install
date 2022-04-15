@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Author: Hakxcore https://github.com/hakxcore
 ## Colors
-currentVersion="2.1.2"
+currentVersion="2.1.3"
 
 ##Platform Check
 if [[ "$OSTYPE" == linux-android* ]]; then

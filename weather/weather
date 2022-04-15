@@ -2,7 +2,7 @@
 # Inspired by: Alexander Epstein https://github.com/alexanderepstein
 # Author: Hakxcore https://github.com/hakxcore
 
-currentVersion="2.1.2" 
+currentVersion="2.1.3" 
 LANG="${LANG:-en}"
 locale=$(echo $LANG | cut -c1-2)
 unset configuredClient

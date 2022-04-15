@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.2"
+currentVersion="2.1.3"
 configuredClient=""
 configuredPython=""
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ## Author: Hakxcore https://github.com/hakxcore
 ## Colors
-currentVersion="2.1.2"
+currentVersion="2.1.3"
 
 declare -a tools=(cheat cipher covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shareterminal shodan shorturl termux-snippets todo transfer weather)
 
