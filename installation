@@ -30,6 +30,7 @@ installationEnd()
   sleep .5
   echo "Termux Snippets version $currentVersion"
   echo  "https://github.com/hakxcore/Termux-snippets"
+  echo -e "\n================= EXIT ==================="
 }
 
 installation()
