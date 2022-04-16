@@ -1,8 +1,36 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.2"
+currentVersion="2.1.3"
 multiline="0" # flag that indicates multiline option
 fileoutput="0" # flag indicating the -f option
+
+##Platform Check
+if [[ "$OSTYPE" == linux-android* ]]; then
+  distro="termux"
+  platform="Termux"
+  prefix="/data/data/com.termux/files/"
+  SUDO=""
+fi
+
+if [ -z "$distro" ]; then
+  distro=$(ls /etc | awk 'match($0, "(.+?)[-_](?:release|version)", groups) {if(groups[1] != "os") {print groups[1]}}')
+  platform="Debian"
+  prefix=""
+  SUDO="sudo"
+fi
+
+if [ -z "$distro" ]; then
+  if [ -f "/etc/os-release" ]; then
+    distro="$(source /etc/os-release && echo $ID)"
+  elif [ "$OSTYPE" == "darwin" ]; then
+    distro="darwin"
+    platform="Darwin"
+    prefix=""
+    SUDO="sudo"
+  else 
+    distro="invalid"
+  fi
+fi
 
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
@@ -87,9 +115,8 @@ update()
         rm -f .TSnippetsHiddenFile
         echo "Success!"
         cd $repositoryName || { echo 'Update Failed'; exit 1; }
-        git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit"
-        
-	./$nameOfInstallFile "update" || exit 1
+        git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit"     
+	      $SUDO ./$nameOfInstallFile "update" || exit 1
         cd ..
         rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory again"; exit 1; }
       else

@@ -851,7 +851,8 @@ For uninstallation execute uninstall file using bash or copy this command.
   
 ## DEMO 
 
-[![asciicast](https://asciinema.org/a/483057.svg)](https://asciinema.org/a/483057)
+[![asciicast](https://asciinema.org/a/487709.svg)](https://asciinema.org/a/487709)
+
   
   
     

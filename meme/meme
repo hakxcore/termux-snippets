@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # Author: HAKXCORE https://github.com/hakxcore
 #Colors
-currentVersion="2.1.2"
+currentVersion="2.1.3"
 RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')" 
 MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')"  BLACK="$(printf '\033[30m')"  
 REDBG="$(printf '\033[41m')"  GREENBG="$(printf '\033[42m')"  ORANGEBG="$(printf '\033[43m')"  BLUEBG="$(printf '\033[44m')"  
@@ -9,6 +9,35 @@ MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(prin
 RESETBG="$(printf '\e[0m')"  BLINK="$(printf '\033[5;31m')"
 
 configuredClient=""
+
+##Platform Check
+if [[ "$OSTYPE" == linux-android* ]]; then
+  distro="termux"
+  platform="Termux"
+  prefix="/data/data/com.termux/files/"
+  SUDO=""
+fi
+
+if [ -z "$distro" ]; then
+  distro=$(ls /etc | awk 'match($0, "(.+?)[-_](?:release|version)", groups) {if(groups[1] != "os") {print groups[1]}}')
+  platform="Debian"
+  prefix=""
+  SUDO="sudo"
+fi
+
+if [ -z "$distro" ]; then
+  if [ -f "/etc/os-release" ]; then
+    distro="$(source /etc/os-release && echo $ID)"
+  elif [ "$OSTYPE" == "darwin" ]; then
+    distro="darwin"
+    platform="Darwin"
+    prefix=""
+    SUDO="sudo"
+  else 
+    distro="invalid"
+  fi
+fi
+
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
 {
@@ -95,7 +124,7 @@ update()
         echo "Success!"
         cd $repositoryName || { echo 'Update Failed'; exit 1; }
         git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."
-        ./$nameOfInstallFile "update" || exit 1
+        $SUDO ./$nameOfInstallFile "update" || exit 1
         cd ..
         rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory again"; exit 1; }
       else
