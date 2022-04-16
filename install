@@ -84,9 +84,9 @@ while true; do
       if command -v termux-snippets &>/dev/null
       then
         echo -e ""$GREEN"\t\t\tInstallation Sucessfull." | pv -qL 15
-        echo -e "\n\t\t\t\U1F449 termux-snippets \U1F448"
+        echo -e "\n\t\t\t\U1F449 termux-snippets \U1F448\n"
         else
-        echo -e "\t\t\tInstallation Unsucessfull"
+        echo -e "\t\t\tInstallation Unsucessfull\n"
       fi
       exit
       ;;
@@ -98,11 +98,22 @@ while true; do
   esac
   case $selection in
     1 )
+    if [[ "$SUDO" == "" ]] 
+    then
       display_termux "TERMUX"
-      ;;
+      else
+        echo "Wrong Choice"
+    fi
+    ;;
     2 )
+    if [[ "$SUDO" == "sudo" ]] 
+    then
       result=$(echo "Debian";)
       display_debian "DEBIAN"
+      else
+        echo "Wrong Choice"
+    fi
+      
       ;;
   esac
 done
