@@ -49,6 +49,17 @@ checkDialog()
   fi 
 }
 
+checkPv()
+{
+  if  command -v pv &>/dev/null; then
+    echo ""
+  else
+    echo $BLUE"Error: pv should be installed"$RESETBG
+    echo $BLUE"use $RED'apt install pv'$BLUE firstly"$RESETBG
+    exit 1
+  fi 
+}
+
 # while-menu-dialog: a menu driven Operating system chooseing Installation  program
 
 DIALOG_CANCEL=1
@@ -65,6 +76,7 @@ display_debian() {
 }
 
 checkDialog
+checkPv
 while true; do
   exec 3>&1
   selection=$(dialog \
