@@ -6,6 +6,21 @@
 <p align="center">
 <img src="https://raw.githubusercontent.com/hakxcore/Termux-snippets/main/media/termux-snippets.png"/></p>
 
+<p align="center">
+  <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#Tools">
+    <img src="https://dabuttonfactory.com/button.png?t=LEARN&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
+  </a>
+  <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#installation">
+    <img src="https://dabuttonfactory.com/button.png?t=INSTALL&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
+  </a>
+  <a href="https://github.com/hakxcore/termux-snippets#DEMO">
+    <img src="https://dabuttonfactory.com/button.png?t=DEMO&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
+  </a>
+  <a href="https://github.com/hakxcore/termux-snippets#CONTRIBUTE">
+    <img src="https://dabuttonfactory.com/button.png?t=CONTRIBUTE&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
+  </a>
+</p>
+
 <div align='center'>
 <a href="https://github.com/hakxcore/followers"><img title="Followers" src="https://img.shields.io/github/followers/hakxcore?color=2eb2ff&style=flat-square"></a>
 <a href="https://github.com/hakxcore/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/hakxcore/Termux-snippets?color=2eb2ff&style=flat-square"></a>
@@ -14,20 +29,10 @@
 <a href="https://github.com/hakxcore/Termux-snippets/blob/master/LICENSE"><img src="https://img.shields.io/github/license/hakxcore/Termux-snippets?color=2eb2ff&style=flat-square" alt="License Badge"/></a></p>
 </div>
 <p align="center">
-  <a href="https://github.com/hakxcore"><img title="Author" src="https://img.shields.io/badge/Author-mukesh%20kumar-2eb2ff.svg?style=for-the-badge&logo=github"></a>
+  <a href="https://github.com/hakxcore"><img title="Author" src="https://img.shields.io/badge/Author-mukesh%20kumar-E36D25.svg?style=for-the-badge&logo=github"></a>
 </p>
 
-<p>
-  <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#Tools">
-    <img src="https://dabuttonfactory.com/button.png?t=READ TOOLS&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
-  </a>
-  <a style="margin-right: 10px;" href="https://github.com/hakxcore/termux-snippets#installation">
-    <img src="https://dabuttonfactory.com/button.png?t=INSTALL&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
-  </a>
-  <a href="https://github.com/hakxcore/termux-snippets#DEMO">
-    <img src="https://dabuttonfactory.com/button.png?t=DEMO&f=Open+Sans&ts=15&tc=000&hp=25&vp=10&c=5&bgt=unicolored&bgc=2eb2ff">
-  </a>
-</p>
+
 
 
 # Tools
