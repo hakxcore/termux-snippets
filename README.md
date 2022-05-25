@@ -885,6 +885,19 @@ For uninstallation execute uninstall file using bash or copy this command.
 
 </details>
 
+</br>
+
+## CONTRIBUTE  
+ You are more than welcome to implement unreasonable features yourself, as well as hack the program to your liking.
+
+If you have suggestions, or are a PR and can answer any of the questions in the source, please contribute:
+
+1. Fork this project
+1. Create your feature branch (`git checkout -b my-new-feature`)
+1. Commit your changes (`git commit -am 'Add some feature'`)
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create new Pull Request
+
 </br> 
 
 ## DONATE
@@ -898,7 +911,6 @@ If this project helped you in any way and you feel like supporting me
 [![Donate with Bitcoin](https://en.cryptobadges.io/badge/small/LWZ3T19YUk66dgkczN7dRhiXDMqSYrXUV4)](https://en.cryptobadges.io/donate/LWZ3T19YUk66dgkczN7dRhiXDMqSYrXUV4)
 #### Inspired by: [Bash-Scripts](https://github.com/alexanderepstein/Bash-Snippets)  
 <a href="https://www.buymeacoffee.com/https://www.buymeacoffee.com/hakxcore"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="https://www.buymeacoffee.com/hakxcore" /></a>
-
 
 </br>
 </br>
