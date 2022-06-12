@@ -38,7 +38,7 @@
 # Tools
 
 > **Note**
-> drop down menus
+> drop down menus 👇
 <details>
 <summary>Cheat</summary>
   
