@@ -43,8 +43,8 @@ Steps to make changes
 
 Once your changes are ready, don't forget to self-review to speed up the review process.
 
-4. Push to the branch (`git push origin my-new-feature`) and thats it :)
-5. Create new Pull Request on Github you are done!
+4. Push to the branch (`git push origin my-new-feature`), thats it :)
+5. Create new Pull Request on Github and you are done!
 
 
 
