@@ -10,6 +10,7 @@ if [[ "$OSTYPE" == linux-android* ]]; then
             platform="Termux"
             prefix="/data/data/com.termux/files/"
             showError="Try execute install script again."
+            privilage=""
     fi
 
     if [ -z "$distro" ]; then
@@ -17,6 +18,7 @@ if [[ "$OSTYPE" == linux-android* ]]; then
         platform="Debian"
         prefix=""
         showError="Try running install script again with root privileges."
+         privilage="sudo "
     fi
 
     if [ -z "$distro" ]; then
@@ -65,7 +67,7 @@ installation()
                 
                 elif [[ $1 == "shodan" ]]; then
                 cd $1 || return 1
-                pip install shodan
+                $privilage apt install python3-shodan
                 chmod a+x $1
                 cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo -e "\n✘ Failure"; echo -e "\nError: $showError"; exit 1; }
                 echo -e "\n✔Success"
