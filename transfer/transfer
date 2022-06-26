@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: Hakxcore https://github.com/Hakxcore
+# Author: Hakxcore https://github.com/hakxcore
 configuredDownloadClient=""
 configuredUploadClient=""
 configuredClient=""
