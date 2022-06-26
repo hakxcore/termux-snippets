@@ -890,6 +890,7 @@ For uninstallation execute uninstall file using bash or copy this command.
 * To grab lyrics from a song: [lyrics.ovh](http://docs.lyricsovh.apiary.io)
 * To generate memes: [MemeGen](https://memegen.link)
 * To get a chart of the top 10 cryptocurrencies: [rate.sx](http://rate.sx)
+* To get a the Defination and Meaning words: [Define](https://dictionaryapi.dev/)
 
 </details>
 
