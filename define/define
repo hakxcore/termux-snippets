@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+# Author: Hakxcore https://github.com/hakxcore
+configuredClient=""
+currentVersion="2.1.3"
+
+##Color
+RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')" 
+MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')"  BLACK="$(printf '\033[30m')"  
+REDBG="$(printf '\033[41m')"  GREENBG="$(printf '\033[42m')"  ORANGEBG="$(printf '\033[43m')"  BLUEBG="$(printf '\033[44m')"  
+MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(printf '\033[47m')"  BLACKBG="$(printf '\033[40m')" 
+RESETBG="$(printf '\e[0m')"  BLINK="$(printf '\033[5;31m')"
+
+##Platform Check
+if [[ "$OSTYPE" == linux-android* ]]; then
+  distro="termux"
+  platform="Termux"
+  prefix="/data/data/com.termux/files/"
+  SUDO=""
+fi
+
+if [ -z "$distro" ]; then
+  distro=$(ls /etc | awk 'match($0, "(.+?)[-_](?:release|version)", groups) {if(groups[1] != "os") {print groups[1]}}')
+  platform="Debian"
+  prefix=""
+  SUDO="sudo"
+fi
+
+if [ -z "$distro" ]; then
+  if [ -f "/etc/os-release" ]; then
+    distro="$(source /etc/os-release && echo $ID)"
+  elif [ "$OSTYPE" == "darwin" ]; then
+    distro="darwin"
+    platform="Darwin"
+    prefix=""
+    SUDO="sudo"
+  else 
+    distro="invalid"
+  fi
+fi
+
+httpGet()
+{
+  case "$configuredClient" in
+    curl)  curl -A curl -s "$@" ;;
+    wget)  wget -qO- "$@" ;;
+    httpie) http -b GET "$@" ;;
+    fetch) fetch -q "$@" ;;
+  esac
+}
+
+
+getConfiguredClient()
+{
+  if  command -v curl &>/dev/null; then
+    configuredClient="curl"
+  elif command -v wget &>/dev/null; then
+    configuredClient="wget"
+  elif command -v http &>/dev/null; then
+    configuredClient="httpie"
+  elif command -v fetch &>/dev/null; then
+    configuredClient="fetch"
+  else
+    echo "Error: This tool requires either curl, wget, httpie or fetch to be installed." >&2
+    return 1
+  fi
+}
+
+update()
+{
+  repositoryName="termux-snippets" 
+  githubUserName="hakxcore" 
+  nameOfInstallFile="install" 
+  latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
+
+  if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
+    echo "Error: update utility has not been configured correctly." >&2
+    exit 1
+  elif [[ $latestVersion == "" ]]; then
+    echo "Error: no active internet connection" >&2
+    exit 1
+  else
+    if [[ "$latestVersion" != "$currentVersion" ]]; then
+      echo "Version $latestVersion available"
+      echo -n "Do you wish to update $repositoryName [Y/n]: "
+      read -r answer
+      if [[ "$answer" == [Yy] ]]; then
+        cd ~ || { echo 'Update Failed'; exit 1; }
+        if [[ -d  ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update again"; exit 1; } ; fi
+        echo -n "Downloading latest version of: $repositoryName."
+        git clone -q "https://github.com/$githubUserName/$repositoryName" && touch .TSnippetsHiddenFile || { echo "Failure!"; exit 1; } &
+        while [ ! -f .TSnippetsHiddenFile ]; do { echo -n "."; sleep 2; };done
+        rm -f .TSnippetsHiddenFile
+        echo "Success!"
+        cd $repositoryName || { echo 'Update Failed'; exit 1; }
+        git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."      
+	      $SUDO ./$nameOfInstallFile "update" || exit 1
+        cd ..
+        rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory again"; exit 1; }
+      else
+        exit 1
+      fi
+    else
+      echo "$repositoryName is already the latest version"
+    fi
+  fi
+}
+
+checkInternet()
+{
+  httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
+}
+
+define(){
+  getConfiguredClient
+  $configuredClient https://api.dictionaryapi.dev/api/v2/entries/en/$1 | jq | grep -E 'partOfSpeech|definition|example' | sed -e 's/"//g'
+}
+
+##Usage and Help
+usage()
+{
+  cat <<EOF
+Define
+
+Description: Get Definations of the words along with their Meanings.
+
+Usage: define
+  -u  Update Termux-snippets Tools
+  -h  Show the help
+  -v  Get the tool version
+Examples:
+
+EOF
+}
+
+##Options(flags)
+while getopts "o:d:uvh" opt; do
+  case "$opt" in
+    \?) echo "Invalid option: -$OPTARG" >&2
+      exit 1
+    ;;
+    h)  usage
+      exit 0
+    ;;
+    v)  echo "Version $currentVersion"
+      exit 0
+    ;;
+    u)
+      getConfiguredClient || exit 1
+      checkInternet || exit 1
+      update || exit 1
+      exit 0
+    ;;
+    :)  echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+    ;;
+  esac
+done
+
+##Driver
+if [[ $# == "0" ]]; then
+  usage
+  exit 0
+elif [[ $# == "1" ]];then
+  if [[ $1 == "help" ]]; then
+    usage
+    exit 0
+  elif [[ $1 == "update" ]]; then
+    getConfiguredClient || exit 1
+    checkInternet || exit 1
+    update || exit 1
+    exit 0
+  fi
+fi
+
+define $1
