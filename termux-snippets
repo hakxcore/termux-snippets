@@ -10,19 +10,6 @@ REDBG="$(printf '\033[41m')"  GREENBG="$(printf '\033[42m')"  ORANGEBG="$(printf
 MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(printf '\033[47m')"  BLACKBG="$(printf '\033[40m')" 
 RESETBG="$(printf '\e[0m')"  BLINK="$(printf '\033[5;31m')"
 
-##Platform Check
-# distr_name=$1
-# if command -v termux-setup-storage  
-# then  
-#   platform="Termux"
-#   showError="Try execute install script again."
-#   prefix="/data/data/com.termux/files/"
-#   else
-#     platform="Debian"
-#     showError="Try running install script again with root privileges."
-#     prefix=" "
-# fi
-
 if [[ "$OSTYPE" == linux-android* ]]; then
             distro="termux"
             platform="Termux"
