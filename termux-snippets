@@ -208,7 +208,7 @@ menu()
                 █████████████████████████████████████████
                 █████████████████████████████████████████
 EOF
-echo -e "\n\n\n\n\n\n\n"
+echo -e "\n\n\n\n\t\t\t\t\U1F446\n\n\n"
       header
     elif [[ $choice -eq 6 ]]; then clear; exit 0
     fi
