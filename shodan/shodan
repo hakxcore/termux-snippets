@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/python3
+#!/usr/bin/python3
 # EASY-INSTALL-ENTRY-SCRIPT: 'shodan==1.25.0','console_scripts','shodan'
 import re
 import sys
