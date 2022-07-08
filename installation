@@ -67,7 +67,7 @@ installation()
                 
                 elif [[ $1 == "shodan" ]]; then
                 cd $1 || return 1
-                $privilage apt install python3-shodan
+                pip install shodan
                 chmod a+x $1
                 cp $1 $prefix/usr/bin > /dev/null 2>&1 || { echo -e "\n✘ Failure"; echo -e "\nError: $showError"; exit 1; }
                 echo -e "\n✔Success"
