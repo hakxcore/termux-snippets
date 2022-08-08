@@ -52,7 +52,7 @@ httpGet()
 getConfiguredClient()
 {
   if  command -v curl &>/dev/null; then
-    configuredClient="curl"
+    configuredClient="curl -s"
   elif command -v wget &>/dev/null; then
     configuredClient="wget"
   elif command -v http &>/dev/null; then
