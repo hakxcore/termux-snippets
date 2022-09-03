@@ -204,7 +204,7 @@ main(){
     else
       echo ""
     fi
-    echo -e "\e[1;2;32m ----------------------------GENRATING MEME FOR YOU--------------------------------\e[0m"
+    echo -e "\e[1;2;32m ⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢ GENRATING MEME FOR YOU ⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢\e[0m"
     curl -s "https://api.memegen.link/images/$bg/$first/$second.jpeg" >> $fileName$num.jpeg || return 1
     if [ -d "Meme" ]
     then
@@ -218,7 +218,7 @@ main(){
     jp2a Meme/$fileName$num.jpeg | pv -qL 15
     echo ""
     xdg-open Meme/$fileName$num.jpeg 
-    echo -e "\e[1;2;32m --------------------------MEME SUCCESSFULLY GENRATED------------------------------\e[0m"
+    echo -e "\e[1;2;32m ⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢ MEME SUCCESSFULLY GENRATED ⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢\e[0m"
     echo ""
     echo -en "\e[1;2;32m Do you wanna Delete it[y/n]: \e[0m"
     read choice
