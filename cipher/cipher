@@ -144,11 +144,12 @@ encryptText()
 	echo $encrypt | sed 's/-e//' | base32
 	echo -e "$GREEN-------------------------------$RESETBG"
 	echo ""
-	echo -e "$RED===============================$RESETBG"
+	echo -e "$RED⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢$RESETBG"
 	echo ""
 	echo -e "$GREEN---------(Cipher Text2)--------$RESETBG"
 	echo $encrypt | sed 's/-e//' | base64
 	echo -e "$GREEN-------------------------------$RESETBG"
+	echo -e "$RED⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢$RESETBG"
 }
 
 ##Functon for decryption
@@ -159,7 +160,7 @@ decryptText()
 	echo $decrypt | base32 -d
 	echo -e "$GREEN-------------------------------$RESETBG"
 	echo ""
-	echo -e "$RED===============================$RESETBG"
+	echo -e "$RED⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢$RESETBG"
 	echo ""
 	echo -e "$GREEN----(Decrypted with base64)----$RESETBG"
 	echo $decrypt | base64 -d
