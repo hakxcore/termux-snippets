@@ -217,12 +217,12 @@ convertCurrency()
   exchangeTo=$(echo "$exchangeTo" | tr '[:lower:]' '[:upper:]')
 
   cat <<EOF
-=========================
+⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡
 | $base to $exchangeTo
 | Rate: $exchangeRate
 | $base: $amount
 | $exchangeTo: $exchangeAmount
-=========================
+⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡⬢⬡
 EOF
 }
 
