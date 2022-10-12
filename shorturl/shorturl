@@ -190,9 +190,10 @@ printShortenedResults()
  --------------------------------------------------------------------
 |  Original URL:  $newURL
 | 
-|  $BLUE>$RESETBG Shortened URL 1: $GREEN$shortenedURL1$RESETBG
-|  $BLUE>$RESETBG Shortened URL 2: $GREEN$shortenedURL2$RESETBG
-|  $BLUE>$RESETBG Shortened URL 3: $GREEN$shortenedURL3$RESETBG
+|--------------------------------------------------------------------
+|  $BLUE>$RESETBG Shortened URL 1 | $GREEN$shortenedURL1$RESETBG
+|  $BLUE>$RESETBG Shortened URL 2 | $GREEN$shortenedURL2$RESETBG
+|  $BLUE>$RESETBG Shortened URL 3 | $GREEN$shortenedURL3$RESETBG
  --------------------------------------------------------------------
 EOF
 }
