@@ -942,3 +942,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 > **Note**
 > Show some love by leaving a 🌟
+
+
+<p align="center">
+  <img src="https://profile-counter.glitch.me/termux-snippets/count.svg" />
+</p>
