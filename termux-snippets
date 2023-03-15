@@ -79,10 +79,10 @@ checkInternet()
 
 header()
 {
-echo "$BOLD$BLUE                       -o          o-"
+echo -e "$BOLD$GREEN\n\n                       -o          o-"
 echo "                        +hydNNNNdyh+"
 echo "                      +mMMMMMMMMMMMMm+"
-echo "                     dMM"$RESETBG"m:"$BOLD$BLUE"NMMMMMMN"$RESETBG":m"$BOLD$BLUE"MMd"
+echo "                     dMM"$RESETBG"m:"$BOLD$GREEN"NMMMMMMN"$RESETBG":m"$BOLD$GREEN"MMd"
 echo "                                       "
 echo "                    hMMMMMMMMMMMMMMMMMMh"
 echo "                ..  yyyyyyyyyyyyyyyyyyyy  .."
@@ -100,8 +100,8 @@ echo "                        MMMMo  oMMMM"
 echo "                        oNMm-  -mMNs$RESETBG"
 echo ""
  title="[Termux-snippets]"
-  installver=""$BLUE"Installed Version:$RESETBG $currentVersion"
-  latestver=""$BLUE"Latest Version:$RESETBG $latestVersion"
+  installver=""$BLUE"Installed Version:$RESETBG$GREEN $currentVersion"
+  latestver=""$BLUE"Latest Version:$RESETBG$GREEN $latestVersion"
   printf "\t\t     $BLUE%s$RESETBG\n" "$title"
   printf "\t%s\t%s\n" "$latestver" "$installver"
 }
