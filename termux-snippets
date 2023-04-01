@@ -142,11 +142,12 @@ menu()
     echo -e "\t\t$BLUE[02]$RESETBG\t\t\tInstallation Check"
     echo -e "\t\t$BLUE[03]$RESETBG\t\t\tView man page"
     echo -e "\t\t$BLUE[04]$RESETBG\t\t\tUpdate"
-    echo -e "\t\t$BLUE[05]$RESETBG\t\t\tDonate"
-    echo -e "\t\t$BLUE[06]$RESETBG\t\t\tQuit"
+    echo -e "\t\t$BLUE[05]$RESETBG\t\t\tGive Suggestion/Feedback"
+    echo -e "\t\t$BLUE[06]$RESETBG\t\t\tDonate"
+    echo -e "\t\t$BLUE[07]$RESETBG\t\t\tQuit"
     echo -e -n "\n\t"$BLUE"Choose an option:$RESETBG "
     read choice
-    if [[ $choice -gt 6 || $choice -lt 1 ]];then
+    if [[ $choice -gt 7 || $choice -lt 1 ]];then
       echo "Error invalid option!"
       sleep 2
       clear
@@ -163,7 +164,12 @@ menu()
       sleep 2
       clear
       header
-    elif [[ $choice -eq 5 ]];then
+    elif [[ $choice -eq 5 ]];then 
+	xdg-open https://forms.gle/gpuhX4uEWECjXUrT6
+	sleep 2
+	clear
+	header
+    elif [[ $choice -eq 6 ]];then
      clear
       echo -e "\tThanks for thinking of donating, that's pretty cool of you"
       echo -e "\n\t"$BLUE"Cryptocurrency Donation Addresses$RESETBG"
@@ -197,7 +203,7 @@ menu()
 EOF
 echo -e "\n\n\n\n\t\t\t\t\U1F446\n\n\n"
       header
-    elif [[ $choice -eq 6 ]]; then clear; exit 0
+    elif [[ $choice -eq 7 ]]; then clear; exit 0
     fi
   done
 }
