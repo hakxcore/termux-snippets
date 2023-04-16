@@ -2,7 +2,7 @@
 # Author: hakxcore
 declare -a tools=(cipher cheat covidinfo crypt cryptocurrency geo gif googler ipinfo jukebox lyrics meme movie news pwned qrify shodan shorturl todo transfer weather)
 declare -a validTools=()
-currentVersion="2.1.3"
+currentVersion="2.1.4"
 configuredClient=""
 RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')" 
 MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')"  BLACK="$(printf '\033[30m')"  
