@@ -164,7 +164,10 @@ menu()
       sleep 2
       clear
       header
-    elif [[ $choice -eq 5 ]];then 
+    elif [[ $choice -eq 5 ]];then
+    echo "Please wait..."
+    sleep 2
+    echo "Opening form on your default browser"
 	xdg-open https://forms.gle/5Fq33N24i6jgJCXv5
 	sleep 2
 	clear
