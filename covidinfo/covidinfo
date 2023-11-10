@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Author: Hakxcore https://github.com/hakxcore
-currentVersion="2.1.3"
+currentVersion="2.1.4"
 configuredClient=""
 
 #colors
